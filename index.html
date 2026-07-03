@@ -57,16 +57,18 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* 卡片懸停微互動 */
-    .card-hover {
+    /* 卡片懸停微互動 (淺色版) */
+    .card-light {
+      background-color: #E5E0D8; /* 淺米色背景 */
       transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       border: 1px solid transparent;
+      border-radius: 2px;
     }
-    .card-hover:hover {
+    .card-light:hover {
       transform: translateY(-4px);
-      background-color: rgba(59, 48, 43, 0.8);
-      border-color: rgba(200, 169, 126, 0.2);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      background-color: #F2EFEA; /* 懸停時稍微提亮 */
+      border-color: rgba(200, 169, 126, 0.6); /* 邊框浮現金色 */
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
@@ -152,24 +154,26 @@
             大禹防災科技有限公司匯集具備近二十年實務經驗的消防設備師、消防設備士及建築師，以沉穩專業的態度，為各類場所提供從規劃設計到施工驗收的完整服務。我們相信，最好的防災設備，應該是看不見的存在。
           </p>
         </div>
+        
         <div class="grid grid-cols-2 gap-4">
-          <div class="bg-walnut/60 p-6 card-hover text-center">
-            <p class="text-gold text-2xl font-light mb-2">20+</p>
-            <p class="text-rice/70 text-xs tracking-wider">年專業經驗</p>
+          <div class="card-light p-6 text-center">
+            <p class="text-walnut text-2xl font-semibold mb-2">20+</p>
+            <p class="text-obsidian/80 text-xs tracking-wider">年專業經驗</p>
           </div>
-          <div class="bg-walnut/60 p-6 card-hover text-center">
-            <p class="text-gold text-2xl font-light mb-2">100+</p>
-            <p class="text-rice/70 text-xs tracking-wider">完成工程案</p>
+          <div class="card-light p-6 text-center">
+            <p class="text-walnut text-2xl font-semibold mb-2">100+</p>
+            <p class="text-obsidian/80 text-xs tracking-wider">完成工程案</p>
           </div>
-          <div class="bg-walnut/60 p-6 card-hover text-center">
-            <p class="text-gold text-2xl font-light mb-2">全台</p>
-            <p class="text-rice/70 text-xs tracking-wider">服務範圍</p>
+          <div class="card-light p-6 text-center">
+            <p class="text-walnut text-2xl font-semibold mb-2">全台</p>
+            <p class="text-obsidian/80 text-xs tracking-wider">服務範圍</p>
           </div>
-          <div class="bg-walnut/60 p-6 card-hover text-center">
-            <p class="text-gold text-2xl font-light mb-2">一條龍</p>
-            <p class="text-rice/70 text-xs tracking-wider">規劃到驗收</p>
+          <div class="card-light p-6 text-center">
+            <p class="text-walnut text-2xl font-semibold mb-2">一條龍</p>
+            <p class="text-obsidian/80 text-xs tracking-wider">規劃到驗收</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
