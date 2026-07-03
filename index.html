@@ -70,7 +70,7 @@
       border-color: rgba(200, 169, 126, 0.6); /* 邊框浮現金色 */
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
     }
-    /* 點陣背景裝飾 (用於淺色區塊增加工程專業感) */
+    /* 點陣背景裝飾 */
     .bg-dot-pattern {
       background-image: radial-gradient(#3B302B 1px, transparent 1px);
       background-size: 32px 32px;
@@ -181,21 +181,28 @@
     </div>
   </section>
 
-  <section class="py-28 px-6 bg-rice relative overflow-hidden border-t border-b border-walnut/10">
-    <div class="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none"></div>
+  <section 
+    class="py-28 px-6 relative bg-cover bg-center bg-no-repeat border-t border-b border-walnut/10"
+    style="background-image: url('https://images.unsplash.com/photo-1619759247142-b457e9e6b634?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fEFyY2hpdGVjdHVyYWwlMjBkcmF3aW5nfGVufDB8fDB8fHww');"
+  >
+    <div class="absolute inset-0 bg-[#E5E0D8]/85"></div>
+    
+    <div class="absolute inset-0 bg-[#0c1622]/10 mix-blend-multiply"></div>
+
+    <div class="absolute inset-0 bg-dot-pattern opacity-5 pointer-events-none"></div>
     
     <div class="max-w-4xl mx-auto text-center relative z-10">
-      <div class="w-12 h-px bg-gold mx-auto mb-8"></div>
+      <div class="w-12 h-px bg-gold mx-auto mb-8 shadow-sm"></div>
       
-      <h2 class="text-3xl md:text-4xl font-medium tracking-[0.15em] mb-8 text-obsidian">
+      <h2 class="text-3xl md:text-4xl font-medium tracking-[0.15em] mb-8 text-obsidian drop-shadow-sm">
         讓防災，成為空間的一部分
       </h2>
       
-      <p class="text-walnut/80 text-base md:text-lg tracking-widest leading-loose mb-12 font-light max-w-2xl mx-auto">
+      <p class="text-obsidian/80 text-base md:text-lg tracking-widest leading-loose mb-12 font-medium max-w-2xl mx-auto drop-shadow-sm">
         無論是餐飲空間、展示中心或商業建築，我們以隱密而專業的方式，將消防設備完美融入您的設計願景。
       </p>
       
-      <a href="services.html" class="inline-flex items-center justify-center gap-4 bg-obsidian text-gold px-10 py-4 text-xs tracking-[0.2em] hover:bg-walnut hover:-translate-y-1 shadow-xl hover:shadow-2xl transition-all duration-500 group">
+      <a href="services.html" class="inline-flex items-center justify-center gap-4 bg-obsidian text-gold px-10 py-4 text-xs tracking-[0.2em] hover:bg-walnut hover:-translate-y-1 shadow-xl hover:shadow-2xl transition-all duration-500 group border border-obsidian/20">
         了解服務項目
         <svg class="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
