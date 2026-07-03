@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>服務項目｜大禹防災科技有限公司</title>
+  <meta name="description" content="大禹防災科技服務項目 — 消防工程規劃設計施工、建照使照申請、消防申報檢測維修等。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0F1110',
+            rice: '#E5E0D8',
+            walnut: '#3B302B',
+            gold: '#C8A97E',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-serif bg-obsidian text-rice">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-scrolled transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="text-gold text-lg tracking-widest font-medium">大禹防災</a>
+        <div class="hidden md:flex items-center gap-10">
+          <a href="index.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">首頁</a>
+          <a href="about.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">關於我們</a>
+          <a href="services.html" class="nav-link text-gold text-sm tracking-wider">服務項目</a>
+          <a href="portfolio.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">工程實績</a>
+          <a href="contact.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">聯絡諮詢</a>
+        </div>
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="開啟選單">
+          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-obsidian/98 border-t border-gold/10">
+      <div class="px-6 py-8 flex flex-col gap-6">
+        <a href="index.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">首頁</a>
+        <a href="about.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">關於我們</a>
+        <a href="services.html" class="text-gold text-sm tracking-wider">服務項目</a>
+        <a href="portfolio.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">工程實績</a>
+        <a href="contact.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">聯絡諮詢</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-40 pb-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="gold-line mx-auto mb-8"></div>
+      <p class="text-gold text-xs tracking-[0.3em] mb-4">SERVICES</p>
+      <h1 class="text-3xl md:text-4xl font-light tracking-widest">服務項目</h1>
+      <p class="mt-6 text-rice/50 text-sm tracking-wider max-w-xl mx-auto leading-loose">
+        從規劃設計到行政申請，提供完整的消防工程一站式服務
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-16 px-6 pb-32">
+    <div class="max-w-6xl mx-auto">
+      <div class="section-divider mb-20"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-walnut p-10 card-hover group">
+          <span class="text-gold/40 text-xs tracking-[0.2em]">01</span>
+          <h3 class="text-lg tracking-wider mt-4 mb-4 group-hover:text-gold transition-colors">消防工程規劃設計施工</h3>
+          <p class="text-rice/50 text-sm leading-loose tracking-wide">
+            依場所特性量身規劃消防系統，涵蓋灑水、警報、排煙等完整設計與施工，確保安全與美學並存。
+          </p>
+        </div>
+
+        <div class="bg-walnut p-10 card-hover group">
+          <span class="text-gold/40 text-xs tracking-[0.2em]">02</span>
+          <h3 class="text-lg tracking-wider mt-4 mb-4 group-hover:text-gold transition-colors">變更使用室內裝修申請</h3>
+          <p class="text-rice/50 text-sm leading-loose tracking-wide">
+            含圖面審查與竣工勘驗，協助完成變更使用及室內裝修之消防相關行政程序。
+          </p>
+        </div>
+
+        <div class="bg-walnut p-10 card-hover group">
+          <span class="text-gold/40 text-xs tracking-[0.2em]">03</span>
+          <h3 class="text-lg tracking-wider mt-4 mb-4 group-hover:text-gold transition-colors">建照與使照申請</h3>
+          <p class="text-rice/50 text-sm leading-loose tracking-wide">
+            代辦建造執照及使用執照之消防相關文件準備與送審，加速建築物合法使用。
+          </p>
+        </div>
+
+        <div class="bg-walnut p-10 card-hover group">
+          <span class="text-gold/40 text-xs tracking-[0.2em]">04</span>
+          <h3 class="text-lg tracking-wider mt-4 mb-4 group-hover:text-gold transition-colors">開業立案檢查</h3>
+          <p class="text-rice/50 text-sm leading-loose tracking-wide">
+            協助各類營業場所完成開業前之消防安全檢查，確保順利取得開業許可。
+          </p>
+        </div>
+
+        <div class="bg-walnut p-10 card-hover group">
+          <span class="text-gold/40 text-xs tracking-[0.2em]">05</span>
+          <h3 class="text-lg tracking-wider mt-4 mb-4 group-hover:text-gold transition-colors">消防申報檢測維修</h3>
+          <p class="text-rice/50 text-sm leading-loose tracking-wide">
+            定期消防設備申報、性能檢測及故障維修，維持設備最佳運作狀態。
+          </p>
+        </div>
+
+        <div class="bg-walnut p-10 card-hover group">
+          <span class="text-gold/40 text-xs tracking-[0.2em]">06</span>
+          <h3 class="text-lg tracking-wider mt-4 mb-4 group-hover:text-gold transition-colors">消防器材批發零售</h3>
+          <p class="text-rice/50 text-sm leading-loose tracking-wide">
+            提供各類合格消防器材之批發與零售，滿足不同場所之設備需求。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 bg-walnut/20">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-rice/50 text-sm tracking-wide leading-loose mb-8">
+        無論您的需求為何，我們的專業團隊將為您提供最適切的建議與方案。
+      </p>
+      <a href="contact.html" class="inline-block border border-gold text-gold px-10 py-3.5 text-sm tracking-widest hover:bg-gold hover:text-obsidian transition-all duration-300">
+        預約諮詢
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gold/10 py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <p class="text-gold text-lg tracking-widest mb-4">大禹防災</p>
+          <p class="text-rice/40 text-xs tracking-wider leading-loose">
+            大禹防災科技有限公司<br>
+            以美學為出發點的頂級消防科技
+          </p>
+        </div>
+        <div>
+          <p class="text-gold text-xs tracking-[0.2em] mb-4">聯絡資訊</p>
+          <p class="text-rice/50 text-xs tracking-wider leading-loose">
+            台北市內湖區民權東路六段180巷6號8樓之8<br>
+            電話：02-8791-6620<br>
+            傳真：02-8791-6720
+          </p>
+        </div>
+        <div>
+          <p class="text-gold text-xs tracking-[0.2em] mb-4">快速連結</p>
+          <div class="flex flex-col gap-2">
+            <a href="about.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">關於我們</a>
+            <a href="services.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">服務項目</a>
+            <a href="portfolio.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">工程實績</a>
+            <a href="contact.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">聯絡諮詢</a>
+          </div>
+        </div>
+      </div>
+      <div class="section-divider mb-8"></div>
+      <p class="text-rice/30 text-xs tracking-wider text-center">© 2026 大禹防災科技有限公司 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('hamburger-active');
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

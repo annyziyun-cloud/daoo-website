@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯絡我們｜大禹防災科技有限公司</title>
+  <meta name="description" content="聯絡大禹防災科技 — 預約諮詢、消防工程規劃設計，歡迎來電或填寫線上表單。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0F1110',
+            rice: '#E5E0D8',
+            walnut: '#3B302B',
+            gold: '#C8A97E',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-serif bg-obsidian text-rice">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-scrolled transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="text-gold text-lg tracking-widest font-medium">大禹防災</a>
+        <div class="hidden md:flex items-center gap-10">
+          <a href="index.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">首頁</a>
+          <a href="about.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">關於我們</a>
+          <a href="services.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">服務項目</a>
+          <a href="portfolio.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">工程實績</a>
+          <a href="contact.html" class="nav-link text-gold text-sm tracking-wider">聯絡諮詢</a>
+        </div>
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="開啟選單">
+          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-obsidian/98 border-t border-gold/10">
+      <div class="px-6 py-8 flex flex-col gap-6">
+        <a href="index.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">首頁</a>
+        <a href="about.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">關於我們</a>
+        <a href="services.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">服務項目</a>
+        <a href="portfolio.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">工程實績</a>
+        <a href="contact.html" class="text-gold text-sm tracking-wider">聯絡諮詢</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-40 pb-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="gold-line mx-auto mb-8"></div>
+      <p class="text-gold text-xs tracking-[0.3em] mb-4">CONTACT</p>
+      <h1 class="text-3xl md:text-4xl font-light tracking-widest">聯絡我們</h1>
+      <p class="mt-6 text-rice/50 text-sm tracking-wider max-w-xl mx-auto leading-loose">
+        歡迎與我們聯繫，我們將盡快為您提供專業諮詢
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="py-16 px-6 pb-32">
+    <div class="max-w-6xl mx-auto">
+      <div class="section-divider mb-20"></div>
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-gold text-xs tracking-[0.3em] mb-10">CONTACT INFO</h2>
+
+          <div class="space-y-10">
+            <div>
+              <p class="text-rice/40 text-xs tracking-wider mb-2">聯絡人</p>
+              <p class="text-rice tracking-wider">高志彥</p>
+              <a href="tel:0921606698" class="text-gold text-sm tracking-wider mt-1 inline-block hover:underline">0921-606-698</a>
+            </div>
+
+            <div>
+              <p class="text-rice/40 text-xs tracking-wider mb-2">Email</p>
+              <a href="mailto:andy.kao1231@gmail.com" class="text-gold text-sm tracking-wider hover:underline">andy.kao1231@gmail.com</a>
+            </div>
+
+            <div>
+              <p class="text-rice/40 text-xs tracking-wider mb-2">公司地址</p>
+              <p class="text-rice/70 text-sm tracking-wider leading-loose">
+                台北市內湖區民權東路六段180巷6號8樓之8
+              </p>
+            </div>
+
+            <div>
+              <p class="text-rice/40 text-xs tracking-wider mb-2">電話 / 傳真</p>
+              <p class="text-rice/70 text-sm tracking-wider leading-loose">
+                電話：02-8791-6620<br>
+                傳真：02-8791-6720
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-gold text-xs tracking-[0.3em] mb-10">INQUIRY FORM</h2>
+          <form action="https://formspree.io/f/your_endpoint" method="POST" class="bg-walnut p-8 md:p-10 space-y-6">
+
+            <div>
+              <label for="name" class="block text-rice/50 text-xs tracking-wider mb-3">姓名</label>
+              <input type="text" id="name" name="name" required
+                class="form-input w-full px-4 py-3 text-sm tracking-wider rounded-none"
+                placeholder="請輸入您的姓名">
+            </div>
+
+            <div>
+              <label for="phone" class="block text-rice/50 text-xs tracking-wider mb-3">聯絡電話</label>
+              <input type="tel" id="phone" name="phone" required
+                class="form-input w-full px-4 py-3 text-sm tracking-wider rounded-none"
+                placeholder="請輸入聯絡電話">
+            </div>
+
+            <div>
+              <label for="case-type" class="block text-rice/50 text-xs tracking-wider mb-3">案件類型</label>
+              <select id="case-type" name="case-type" required
+                class="form-input w-full px-4 py-3 text-sm tracking-wider rounded-none">
+                <option value="" disabled selected>請選擇案件類型</option>
+                <option value="fire-engineering">消防工程規劃設計施工</option>
+                <option value="interior-change">變更使用室內裝修申請</option>
+                <option value="building-permit">建照與使照申請</option>
+                <option value="business-license">開業立案檢查</option>
+                <option value="inspection">消防申報檢測維修</option>
+                <option value="equipment">消防器材批發零售</option>
+                <option value="other">其他諮詢</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-rice/50 text-xs tracking-wider mb-3">需求簡述</label>
+              <textarea id="message" name="message" rows="5" required
+                class="form-input w-full px-4 py-3 text-sm tracking-wider rounded-none resize-none"
+                placeholder="請簡述您的需求"></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full border border-gold text-gold py-3.5 text-sm tracking-widest hover:bg-gold hover:text-obsidian transition-all duration-300">
+              送出諮詢
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gold/10 py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <p class="text-gold text-lg tracking-widest mb-4">大禹防災</p>
+          <p class="text-rice/40 text-xs tracking-wider leading-loose">
+            大禹防災科技有限公司<br>
+            以美學為出發點的頂級消防科技
+          </p>
+        </div>
+        <div>
+          <p class="text-gold text-xs tracking-[0.2em] mb-4">聯絡資訊</p>
+          <p class="text-rice/50 text-xs tracking-wider leading-loose">
+            台北市內湖區民權東路六段180巷6號8樓之8<br>
+            電話：02-8791-6620<br>
+            傳真：02-8791-6720
+          </p>
+        </div>
+        <div>
+          <p class="text-gold text-xs tracking-[0.2em] mb-4">快速連結</p>
+          <div class="flex flex-col gap-2">
+            <a href="about.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">關於我們</a>
+            <a href="services.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">服務項目</a>
+            <a href="portfolio.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">工程實績</a>
+            <a href="contact.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">聯絡諮詢</a>
+          </div>
+        </div>
+      </div>
+      <div class="section-divider mb-8"></div>
+      <p class="text-rice/30 text-xs tracking-wider text-center">© 2026 大禹防災科技有限公司 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('hamburger-active');
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
