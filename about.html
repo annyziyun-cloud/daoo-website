@@ -19,8 +19,7 @@
           },
           fontFamily: {
             serif: ['"Noto Serif TC"', 'serif'],
-            // 指定整合 Bakudai (莫大毛筆體)，並以 Noto Serif TC 為完美繁體中文墊底
-            brush: ['"Bakudai"', '"Long Cang"', '"Noto Serif TC"', 'serif'],
+            brush: ['"Bakudai"', '"DFKai-SB"', '"Noto Serif TC"', 'serif'],
           },
         },
       },
@@ -39,7 +38,7 @@
     }
     .gold-line {
       width: 1px;
-      height: 80px;
+      height: 100px;
       background: linear-gradient(to bottom, transparent, #C8A97E, transparent);
     }
     .section-divider {
@@ -55,65 +54,66 @@
     .animate-delay-2 { animation-delay: 0.6s; }
     
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(25px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* 頂級大氣滾動引導動畫 */
     @keyframes scrollDownFloat {
-      0%, 100% { transform: translate(-50%, 0); opacity: 0.3; }
-      50% { transform: translate(-50%, 8px); opacity: 0.9; }
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.4; }
+      50% { transform: translate(-50%, 12px); opacity: 1; }
     }
     .scroll-indicator {
       animation: scrollDownFloat 2.5s infinite ease-in-out;
     }
 
-    /* 輪播卡片沉浸式重疊狀態控制 */
+    /* 輪播卡片高度沉浸式重疊與放大縮小控制 */
     .carousel-card {
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    /* 未選中狀態：高度毛玻璃模糊、向後壓縮、極低不透明度、無視點擊 */
+    /* 未選中狀態：加強毛玻璃模糊、大幅度向後壓縮、超低不透明度 */
     .carousel-card.inactive {
-      opacity: 0.2;
-      transform: scale(0.92);
-      filter: blur(5px);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      opacity: 0.15;
+      transform: scale(0.88);
+      filter: blur(6px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       pointer-events: none;
       z-index: 0;
     }
-    /* 選中焦點狀態：完全清晰、向前巨大化躍升、金色光晕向外發散 */
+    /* 選中焦點狀態：完全清晰、大幅度向前巨大化突圍、金色立體光芒四射 */
     .carousel-card.active {
       opacity: 1;
-      transform: scale(1.1);
+      transform: scale(1.15);
       filter: blur(0px);
-      background-color: rgba(14, 23, 36, 0.8);
-      border-color: rgba(200, 169, 126, 0.5);
-      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(200, 169, 126, 0.1);
-      z-index: 20;
+      background-color: rgba(10, 18, 30, 0.85);
+      border-color: rgba(200, 169, 126, 0.6);
+      box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(200, 169, 126, 0.15);
+      z-index: 30;
     }
 
-    /* 莫大毛筆體專屬金墨光暈懸停擴散效果 */
+    /* 專屬毛筆字體金墨背光懸停擴散效果 */
     .brush-title {
       transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       text-shadow: 0 0 0px rgba(200, 169, 126, 0);
     }
     .brush-title:hover {
       color: #C8A97E !important;
-      transform: scale(1.06) translateY(-2px);
-      text-shadow: 0 0 25px rgba(200, 169, 126, 0.5), 0 0 50px rgba(200, 169, 126, 0.2);
+      transform: scale(1.07) translateY(-3px);
+      text-shadow: 0 0 30px rgba(200, 169, 126, 0.6), 0 0 60px rgba(200, 169, 126, 0.3);
     }
   </style>
 </head>
 <body class="font-serif bg-obsidian text-rice tracking-wide bg-fixed bg-cover bg-center relative" 
       style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&auto=format&fit=crop&q=80');">
 
-  <div class="absolute inset-0 bg-obsidian/92 pointer-events-none z-0"></div>
+  <!-- 精品級深藍色透明遮罩 (完全覆蓋背景，大幅抽高文字能見度與層次質感) -->
+  <div class="absolute inset-0 bg-[#0c121e]/94 pointer-events-none z-0"></div>
 
+  <!-- Navbar -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
-        
         <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500 relative z-10">
           <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           <span class="hidden sm:block">大禹防災科技有限公司</span>
@@ -146,52 +146,60 @@
     </div>
   </nav>
 
-  <section class="pt-60 pb-36 px-6 relative z-10 flex flex-col justify-center items-center min-h-[75vh]">
-    <div class="max-w-5xl mx-auto text-center relative">
-      <div class="gold-line mx-auto mb-10 animate-fade-in"></div>
-      <p class="text-gold text-xs tracking-[0.4em] mb-6 animate-fade-in animate-delay-1">ABOUT US</p>
-      <h1 class="text-4xl md:text-5xl font-light tracking-[0.2em] text-rice mb-12 animate-fade-in animate-delay-1">關於我們</h1>
+  <!-- Page Header -->
+  <section class="pt-64 pb-44 px-6 relative z-10 flex flex-col justify-center items-center min-h-[85vh]">
+    <div class="max-w-6xl mx-auto text-center relative">
+      <div class="gold-line mx-auto mb-12 animate-fade-in"></div>
+      <p class="text-gold text-xs sm:text-sm tracking-[0.5em] mb-6 animate-fade-in animate-delay-1">ABOUT US</p>
+      <h1 class="text-4xl md:text-6xl font-light tracking-[0.25em] text-rice mb-16 animate-fade-in animate-delay-1">關於我們</h1>
       
-      <p class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-widest text-rice/90 max-w-4xl mx-auto leading-[1.8] sm:leading-loose animate-fade-in animate-delay-2 drop-shadow-md">
+      <!-- 放大加粗優化排版層次區 -->
+      <p class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.18em] text-rice leading-[1.8] sm:leading-loose max-w-5xl mx-auto animate-fade-in animate-delay-2 drop-shadow-2xl">
         匯聚跨領域專業，以誠信為基石，創造超越期待的防災解決方案
       </p>
     </div>
 
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center scroll-indicator pointer-events-none hidden sm:block">
-      <p class="text-[10px] tracking-[0.3em] text-gold/60 uppercase mb-3">滑動頁面 ── SCROLL DOWN</p>
-      <div class="w-px h-10 bg-gradient-to-b from-gold/60 to-transparent mx-auto"></div>
+    <!-- 向下滑動沉浸式引導指標 -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center scroll-indicator pointer-events-none">
+      <p class="text-[10px] sm:text-xs tracking-[0.4em] text-gold/70 uppercase mb-4 font-medium">滑動頁面 ── SCROLL DOWN</p>
+      <div class="w-px h-14 bg-gradient-to-b from-gold to-transparent mx-auto"></div>
     </div>
   </section>
 
-  <section class="py-24 px-4 sm:px-6 relative z-10 overflow-hidden bg-gradient-to-b from-transparent via-[#0c1622]/30 to-transparent">
+  <!-- Team Section -->
+  <section class="py-28 px-4 sm:px-6 relative z-10 overflow-hidden bg-gradient-to-b from-transparent via-[#0c1622]/40 to-transparent">
     <div class="max-w-6xl mx-auto relative">
       <div class="section-divider mb-24"></div>
       <p class="text-gold text-xs tracking-[0.3em] mb-3">PROFESSIONAL TEAM</p>
-      <h2 class="text-2xl md:text-3xl font-light tracking-wider mb-16 text-rice">精銳團隊・美學防災</h2>
+      <h2 class="text-2xl md:text-3xl font-light tracking-wider mb-20 text-rice">精銳團隊・美學防災</h2>
       
-      <div class="relative w-full overflow-hidden py-12 px-2">
-        <div id="carousel-track" class="flex transition-transform duration-700 cubic-bezier(0.25, 1, 0.5, 1) gap-6 md:gap-0 md:-space-x-8">
+      <!-- 智慧大幅放大與重疊輪播視窗 -->
+      <div class="relative w-full overflow-hidden py-16 px-2">
+        <div id="carousel-track" class="flex transition-transform duration-800 cubic-bezier(0.25, 1, 0.5, 1) gap-8 md:gap-0 md:-space-x-12">
           
-          <div class="carousel-card min-w-[88%] md:min-w-[38%] border border-gold/15 p-8 md:p-12 backdrop-blur-md relative group rounded-sm">
+          <!-- 方格 1 -->
+          <div class="carousel-card min-w-[86%] md:min-w-[40%] border border-gold/15 p-8 md:p-14 backdrop-blur-md relative group rounded-sm">
             <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
-            <h3 class="text-xl tracking-wider mb-5 font-medium text-rice">消防設備師</h3>
-            <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+            <h3 class="text-xl sm:text-2xl tracking-wider mb-5 font-medium text-rice">消防設備師</h3>
+            <p class="text-rice/60 text-sm sm:text-base leading-loose tracking-wide font-light">
               具備近二十年豐富實務經驗，主導消防工程之規劃設計與技術審查，確保每一項方案皆符合最高安全標準與法規要求。
             </p>
           </div>
           
-          <div class="carousel-card min-w-[88%] md:min-w-[38%] border border-gold/15 p-8 md:p-12 backdrop-blur-md relative group rounded-sm">
+          <!-- 方格 2 -->
+          <div class="carousel-card min-w-[86%] md:min-w-[40%] border border-gold/15 p-8 md:p-14 backdrop-blur-md relative group rounded-sm">
             <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
-            <h3 class="text-xl tracking-wider mb-5 font-medium text-rice">消防設備士</h3>
-            <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+            <h3 class="text-xl sm:text-2xl tracking-wider mb-5 font-medium text-rice">消防設備士</h3>
+            <p class="text-rice/60 text-sm sm:text-base leading-loose tracking-wide font-light">
               負責現場施工狀況之監管與品質把關，從材料選用到工序執行，嚴格確保工程品質與施工安全。
             </p>
           </div>
           
-          <div class="carousel-card min-w-[88%] md:min-w-[38%] border border-gold/15 p-8 md:p-12 backdrop-blur-md relative group rounded-sm">
+          <!-- 方格 3 -->
+          <div class="carousel-card min-w-[86%] md:min-w-[40%] border border-gold/15 p-8 md:p-14 backdrop-blur-md relative group rounded-sm">
             <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
-            <h3 class="text-xl tracking-wider mb-5 font-medium text-rice">專屬建築師</h3>
-            <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+            <h3 class="text-xl sm:text-2xl tracking-wider mb-5 font-medium text-rice">專屬建築師</h3>
+            <p class="text-rice/60 text-sm sm:text-base leading-loose tracking-wide font-light">
               提供建築法規之專業釋疑與諮詢，協助客戶順利完成建照、使照及變更使用等建築行政程序。
             </p>
           </div>
@@ -199,29 +207,31 @@
         </div>
       </div>
 
-      <div class="flex items-center justify-center gap-8 mt-6">
-        <button id="prev-slide" class="text-gold/40 hover:text-gold transition-colors p-3 bg-white/5 hover:bg-white/10 rounded-full" aria-label="上一個團隊">
+      <!-- 輪播動態控制器 -->
+      <div class="flex items-center justify-center gap-8 mt-10">
+        <button id="prev-slide" class="text-gold/40 hover:text-gold transition-colors p-3.5 bg-white/5 hover:bg-white/10 rounded-full shadow-lg" aria-label="上一個團隊">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         </button>
-        <div id="carousel-dots" class="flex gap-3">
-          </div>
-        <button id="next-slide" class="text-gold/40 hover:text-gold transition-colors p-3 bg-white/5 hover:bg-white/10 rounded-full" aria-label="下一個團隊">
+        <div id="carousel-dots" class="flex gap-3"></div>
+        <button id="next-slide" class="text-gold/40 hover:text-gold transition-colors p-3.5 bg-white/5 hover:bg-white/10 rounded-full shadow-lg" aria-label="下一個團隊">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
   </section>
 
-  <section class="py-28 px-6 relative z-10 bg-gradient-to-b from-transparent to-obsidian/40">
+  <!-- Philosophy Section -->
+  <section class="py-32 px-6 relative z-10 bg-gradient-to-b from-transparent to-obsidian/50">
     <div class="max-w-4xl mx-auto">
       <div class="section-divider mb-20"></div>
       <p class="text-gold text-xs tracking-[0.3em] mb-3 text-center">PHILOSOPHY</p>
-      <h2 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-28 text-rice">經營理念</h2>
+      <h2 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-32 text-rice">經營理念</h2>
       
-      <div class="space-y-24">
-        <div class="grid md:grid-cols-[220px_1fr] gap-8 md:gap-12 items-center group">
+      <div class="space-y-28">
+        <!-- 項目 壹 -->
+        <div class="grid md:grid-cols-[240px_1fr] gap-8 md:gap-14 items-center group">
           <div class="text-left md:text-right">
-            <h3 class="brush-title font-brush text-5xl md:text-7xl text-rice/90 cursor-default select-none whitespace-nowrap tracking-wide">
+            <h3 class="brush-title font-brush text-5xl md:text-7xl text-rice/90 cursor-default select-none whitespace-nowrap tracking-wider">
               誠信為本
             </h3>
           </div>
@@ -232,9 +242,10 @@
           </div>
         </div>
         
-        <div class="grid md:grid-cols-[220px_1fr] gap-8 md:gap-12 items-center group">
+        <!-- 項目 貳 -->
+        <div class="grid md:grid-cols-[240px_1fr] gap-8 md:gap-14 items-center group">
           <div class="text-left md:text-right">
-            <h3 class="brush-title font-brush text-5xl md:text-7xl text-rice/90 cursor-default select-none whitespace-nowrap tracking-wide">
+            <h3 class="brush-title font-brush text-5xl md:text-7xl text-rice/90 cursor-default select-none whitespace-nowrap tracking-wider">
               互惠共生
             </h3>
           </div>
@@ -245,9 +256,10 @@
           </div>
         </div>
         
-        <div class="grid md:grid-cols-[220px_1fr] gap-8 md:gap-12 items-center group">
+        <!-- 項目 參 -->
+        <div class="grid md:grid-cols-[240px_1fr] gap-8 md:gap-14 items-center group">
           <div class="text-left md:text-right">
-            <h3 class="brush-title font-brush text-5xl md:text-7xl text-rice/90 cursor-default select-none whitespace-nowrap tracking-wide">
+            <h3 class="brush-title font-brush text-5xl md:text-7xl text-rice/90 cursor-default select-none whitespace-nowrap tracking-wider">
               超越期待
             </h3>
           </div>
@@ -261,6 +273,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="border-t border-gold/10 py-16 px-6 bg-[#0a1018]/95 backdrop-blur-md relative z-10">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-3 gap-12 mb-12">
@@ -300,7 +313,6 @@
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
 
-      // 導覽列滾動自動變色
       window.addEventListener('scroll', () => {
         if (!navbar) return;
         if (window.scrollY > 50) {
@@ -310,14 +322,13 @@
         }
       });
 
-      // 漢堡選單開關
       if (menuBtn) {
         menuBtn.addEventListener('click', () => {
           if (mobileMenu) mobileMenu.classList.toggle('hidden');
         });
       }
 
-      // --- 智慧重疊與大比例放大輪播展示核心邏輯 ---
+      // --- 智慧重疊與大幅度放大聚焦平移邏輯 ---
       const track = document.getElementById('carousel-track');
       const cards = document.querySelectorAll('.carousel-card');
       const prevBtn = document.getElementById('prev-slide');
@@ -329,7 +340,6 @@
       let currentIndex = 0;
       const isMobile = () => window.innerWidth < 768;
 
-      // 初始化響應式導覽圓點
       if (dotsContainer) {
         dotsContainer.innerHTML = '';
         cards.forEach((_, index) => {
@@ -341,14 +351,12 @@
         });
       }
 
-      // 核心輪播動態渲染函數
       const updateCarousel = (index) => {
         if (index < 0 || index >= cards.length) return;
         currentIndex = index;
 
         const dots = dotsContainer ? dotsContainer.querySelectorAll('button') : [];
 
-        // 1. 更新卡片的主次層次與毛玻璃模糊度
         cards.forEach((card, i) => {
           if (i === currentIndex) {
             card.classList.add('active');
@@ -359,7 +367,6 @@
           }
         });
 
-        // 2. 更新圓點樣式
         dots.forEach((dot, i) => {
           if (i === currentIndex) {
             dot.classList.add('bg-gold', 'w-5');
@@ -370,22 +377,19 @@
           }
         });
 
-        // 3. 計算並平移軌道（不論手機或桌機都進行自適應聚焦平移，達成完美重疊居中）
         if (isMobile()) {
           const offset = currentIndex * 85;
           track.style.transform = `translateX(calc(-${offset}% - ${currentIndex * 24}px))`;
         } else {
-          // 桌機版平移計算：讓當前被選中放大的卡片精準居中，並與左右卡片產生精美錯位重疊
           const containerWidth = track.parentElement.offsetWidth;
           const cardWidth = cards[0].offsetWidth;
-          // 桌機版重疊間距補償計算
-          const overlapCorrection = currentIndex * 32; 
+          // 桌機端重疊間距精密補償計算，達成完美沉浸式微重疊
+          const overlapCorrection = currentIndex * 48; 
           const centerPosition = (containerWidth / 2) - (cardWidth / 2) - (currentIndex * cardWidth) + overlapCorrection;
           track.style.transform = `translateX(${centerPosition}px)`;
         }
       };
 
-      // 箭頭點擊監聽綁定
       if (prevBtn) {
         prevBtn.addEventListener('click', () => {
           let newIndex = currentIndex - 1;
@@ -402,14 +406,11 @@
         });
       }
 
-      // 監聽螢幕縮放
       window.addEventListener('resize', () => {
         updateCarousel(currentIndex);
       });
 
-      // 初始化第一次首屏焦點
       updateCarousel(0);
-
     })();
   </script>
 </body>
