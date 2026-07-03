@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大禹防災科技有限公司｜無形的頂級防護</title>
   <meta name="description" content="大禹防災科技有限公司 — 以美學為出發點，將消防設備完美融入各式場所的設計當中。">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -70,6 +70,11 @@
       border-color: rgba(200, 169, 126, 0.6); /* 邊框浮現金色 */
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
     }
+    /* 點陣背景裝飾 (用於淺色區塊增加工程專業感) */
+    .bg-dot-pattern {
+      background-image: radial-gradient(#3B302B 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
   </style>
 </head>
 <body class="font-serif bg-obsidian text-rice tracking-wide">
@@ -78,9 +83,7 @@
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
         <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500">
-          
           <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
-
           <span class="hidden sm:block">大禹防災科技有限公司</span>
         </a>
 
@@ -178,14 +181,25 @@
     </div>
   </section>
 
-  <section class="py-24 px-6 bg-[#0c1622]/60 border-t border-b border-gold/5">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-xl md:text-2xl font-light tracking-wider mb-6 text-rice">讓防災，成為空間的一部分</h2>
-      <p class="text-rice/50 text-sm tracking-wide leading-loose mb-8 font-light">
-        無論是餐飲空間、展示中心或商業建築，我們以隱密而專業的方式，將消防設備融入您的設計願景。
+  <section class="py-28 px-6 bg-rice relative overflow-hidden border-t border-b border-walnut/10">
+    <div class="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="w-12 h-px bg-gold mx-auto mb-8"></div>
+      
+      <h2 class="text-3xl md:text-4xl font-medium tracking-[0.15em] mb-8 text-obsidian">
+        讓防災，成為空間的一部分
+      </h2>
+      
+      <p class="text-walnut/80 text-base md:text-lg tracking-widest leading-loose mb-12 font-light max-w-2xl mx-auto">
+        無論是餐飲空間、展示中心或商業建築，我們以隱密而專業的方式，將消防設備完美融入您的設計願景。
       </p>
-      <a href="services.html" class="inline-block text-gold text-xs tracking-[0.2em] border-b border-gold/30 pb-1 hover:border-gold transition-colors duration-300">
-        了解服務項目 →
+      
+      <a href="services.html" class="inline-flex items-center justify-center gap-4 bg-obsidian text-gold px-10 py-4 text-xs tracking-[0.2em] hover:bg-walnut hover:-translate-y-1 shadow-xl hover:shadow-2xl transition-all duration-500 group">
+        了解服務項目
+        <svg class="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
       </a>
     </div>
   </section>
