@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>關於我們｜大禹防災科技有限公司</title>
   <meta name="description" content="認識大禹防災科技團隊 — 消防設備師、消防設備士與建築師的專業組合。">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Zhi+Mang+Xing&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,13 +19,14 @@
           },
           fontFamily: {
             serif: ['"Noto Serif TC"', 'serif'],
+            brush: ['"Zhi Mang Xing"', 'cursive'],
           },
         },
       },
     };
   </script>
   <style>
-    /* 修正自訂 CSS 與動態效果 */
+    /* 修正導覽列動態效果 */
     .nav-scrolled {
       background-color: rgba(12, 22, 34, 0.9) !important;
       backdrop-filter: blur(12px);
@@ -51,40 +52,61 @@
     }
     .animate-delay-1 { animation-delay: 0.3s; }
     .animate-delay-2 { animation-delay: 0.6s; }
-    .animate-delay-3 { animation-delay: 0.9s; }
     
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* 毛玻璃卡片懸停微互動 */
-    .glass-card-hover {
-      background-color: rgba(12, 22, 34, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(200, 169, 126, 0.15);
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* 輪播卡片狀態樣式控制（毛玻璃材質層次優化） */
+    .carousel-card {
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    .glass-card-hover:hover {
-      transform: translateY(-5px);
-      background-color: rgba(12, 22, 34, 0.75);
+    /* 未選中狀態：強制毛玻璃模糊、縮小、低透明度、禁用點擊 */
+    .carousel-card.inactive {
+      opacity: 0.25;
+      transform: scale(0.9);
+      filter: blur(4px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      pointer-events: none;
+    }
+    /* 選中狀態：完全清晰、放大、金色微光發散 */
+    .carousel-card.active {
+      opacity: 1;
+      transform: scale(1.03);
+      filter: blur(0px);
+      background-color: rgba(12, 22, 34, 0.65);
       border-color: rgba(200, 169, 126, 0.4);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 169, 126, 0.05);
+    }
+
+    /* 書法毛筆文字專屬高質感背光擴散特效 */
+    .brush-title {
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      text-shadow: 0 0 0px rgba(200, 169, 126, 0);
+    }
+    .brush-title:hover {
+      color: #C8A97E !important;
+      transform: scale(1.08) rotate(-1deg);
+      text-shadow: 0 0 30px rgba(200, 169, 126, 0.4), 0 0 60px rgba(200, 169, 126, 0.2);
     }
   </style>
 </head>
-<body class="font-serif bg-obsidian text-rice tracking-wide">
+<body class="font-serif bg-obsidian text-rice tracking-wide bg-fixed bg-cover bg-center relative" 
+      style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&auto=format&fit=crop&q=80');">
+
+  <div class="absolute inset-0 bg-obsidian/90 pointer-events-none z-0"></div>
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
-        
-        <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500">
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500 relative z-10">
           <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           <span class="hidden sm:block">大禹防災科技有限公司</span>
         </a>
 
-        <div class="hidden md:flex items-center gap-10">
+        <div class="hidden md:flex items-center gap-10 relative z-10">
           <a href="index.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">首頁</a>
           <a href="about.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">關於我們</a>
           <a href="services.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
@@ -92,7 +114,7 @@
           <a href="contact.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
         </div>
 
-        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50 relative z-10" aria-label="開啟選單">
           <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
           <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
           <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
@@ -100,7 +122,7 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-[#0c1622]/98 backdrop-blur-md border-t border-[#C8A97E]/10 absolute w-full left-0 top-full">
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0c1622]/98 backdrop-blur-md border-t border-[#C8A97E]/10 absolute w-full left-0 top-full z-0">
       <div class="px-6 py-8 flex flex-col gap-6 text-center">
         <a href="index.html" class="text-[#E5E0D8] text-sm tracking-wider">首頁</a>
         <a href="about.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8">關於我們</a>
@@ -111,10 +133,10 @@
     </div>
   </nav>
 
-  <section class="pt-48 pb-20 px-6 bg-gradient-to-b from-[#0c1622]/50 to-transparent relative">
+  <section class="pt-48 pb-20 px-6 relative z-10">
     <div class="max-w-6xl mx-auto text-center">
       <div class="gold-line mx-auto mb-8 animate-fade-in"></div>
-      <p class="text-gold text-xs tracking-[0.3em] mb-4 animate-fade-in animate-delay-1">ABOUT US</p>
+      <p class="text-gold text-xs tracking-[0.3em] mb-4 mesh-title animate-fade-in animate-delay-1">ABOUT US</p>
       <h1 class="text-3xl md:text-4xl font-light tracking-widest text-rice animate-fade-in animate-delay-1">關於我們</h1>
       <p class="mt-6 text-rice/60 text-sm md:text-base tracking-wider max-w-xl mx-auto leading-loose font-light animate-fade-in animate-delay-2">
         匯聚跨領域專業，以誠信為基石，創造超越期待的防災解決方案
@@ -122,72 +144,96 @@
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-[#0c1622]/20 relative">
+  <section class="py-20 px-4 sm:px-6 relative z-10 overflow-hidden">
     <div class="max-w-6xl mx-auto">
       <div class="section-divider mb-20"></div>
       <p class="text-gold text-xs tracking-[0.3em] mb-3">PROFESSIONAL TEAM</p>
       <h2 class="text-2xl md:text-3xl font-light tracking-wider mb-12 text-rice">精銳團隊・美學防災</h2>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass-card-hover p-10 relative overflow-hidden group">
-          <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
-          <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">消防設備師</h3>
-          <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
-            具備近二十年豐富實務經驗，主導消防工程之規劃設計與技術審查，確保每一項方案皆符合最高安全標準與法規要求。
+      <div class="relative w-full overflow-hidden py-4">
+        <div id="carousel-track" class="flex transition-transform duration-700 cubic-bezier(0.25, 1, 0.5, 1) gap-6 md:gap-8">
+          
+          <div class="carousel-card min-w-[85%] md:min-w-[calc(33.333%-22px)] border border-gold/15 p-8 md:p-10 bg-[#0c1622]/40 backdrop-blur-md relative group">
+            <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
+            <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">消防設備師</h3>
+            <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+              具備近二十年豐富實務經驗，主導消防工程之規劃設計與技術審查，確保每一項方案皆符合最高安全標準與法規要求。
           </p>
+          </div>
+          
+          <div class="carousel-card min-w-[85%] md:min-w-[calc(33.333%-22px)] border border-gold/15 p-8 md:p-10 bg-[#0c1622]/40 backdrop-blur-md relative group">
+            <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
+            <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">消防設備士</h3>
+            <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+              負責現場施工狀況之監管與品質把關，從材料選用到工序執行，嚴格確保工程品質與施工安全。
+            </p>
+          </div>
+          
+          <div class="carousel-card min-w-[85%] md:min-w-[calc(33.333%-22px)] border border-gold/15 p-8 md:p-10 bg-[#0c1622]/40 backdrop-blur-md relative group">
+            <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
+            <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">專屬建築師</h3>
+            <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+              提供建築法規之專業釋疑與諮詢，協助客戶順利完成建照、使照及變更使用等建築行政程序。
+            </p>
+          </div>
+          
         </div>
-        
-        <div class="glass-card-hover p-10 relative overflow-hidden group">
-          <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
-          <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">消防設備士</h3>
-          <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
-            負責現場施工狀況之監管與品質把關，從材料選用到工序執行，嚴格確保工程品質與施工安全。
-          </p>
-        </div>
-        
-        <div class="glass-card-hover p-10 relative overflow-hidden group">
-          <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
-          <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">專屬建築師</h3>
-          <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
-            提供建築法規之專業釋疑與諮詢，協助客戶順利完成建照、使照及變更使用等建築行政程序。
-          </p>
-        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 mt-10">
+        <button id="prev-slide" class="text-gold/50 hover:text-gold transition-colors p-2" aria-label="上一個團隊">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div id="carousel-dots" class="flex gap-2.5">
+          </div>
+        <button id="next-slide" class="text-gold/50 hover:text-gold transition-colors p-2" aria-label="下一個團隊">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <section class="py-24 px-6 bg-gradient-to-b from-transparent to-[#0c1622]/40">
+  <section class="py-24 px-6 relative z-10 bg-gradient-to-b from-transparent to-obsidian/60">
     <div class="max-w-4xl mx-auto">
       <div class="section-divider mb-16"></div>
       <p class="text-gold text-xs tracking-[0.3em] mb-3 text-center">PHILOSOPHY</p>
-      <h2 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-16 text-rice">經營理念</h2>
+      <h2 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-24 text-rice">經營理念</h2>
       
-      <div class="space-y-12">
-        <div class="flex gap-6 items-start group">
-          <span class="text-gold font-medium text-sm mt-1 shrink-0 border border-gold/20 px-2 py-0.5 bg-[#0c1622]/30">壹</span>
-          <div class="border-b border-white/5 pb-6 w-full">
-            <h3 class="text-rice tracking-wider text-base font-medium mb-3 group-hover:text-gold transition-colors duration-300">誠信為本</h3>
-            <p class="text-rice/50 text-sm leading-loose tracking-wide font-light">
+      <div class="space-y-20">
+        <div class="grid md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-center group">
+          <div class="text-left md:text-right">
+            <h3 class="brush-title font-brush text-5xl md:text-6xl text-rice/90 cursor-default select-none whitespace-nowrap">
+              誠信為本
+            </h3>
+          </div>
+          <div class="border-l border-gold/20 pl-6 md:pl-10 py-2">
+            <p class="text-rice/60 text-sm sm:text-base leading-loose tracking-wide font-light">
               以誠信作為一切合作的基石，透明溝通、確實履約，建立長久互信的企業合作關係。
             </p>
           </div>
         </div>
         
-        <div class="flex gap-6 items-start group">
-          <span class="text-gold font-medium text-sm mt-1 shrink-0 border border border-gold/20 px-2 py-0.5 bg-[#0c1622]/30">貳</span>
-          <div class="border-b border-white/5 pb-6 w-full">
-            <h3 class="text-rice tracking-wider text-base font-medium mb-3 group-hover:text-gold transition-colors duration-300">互惠共生</h3>
-            <p class="text-rice/50 text-sm leading-loose tracking-wide font-light">
+        <div class="grid md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-center group">
+          <div class="text-left md:text-right">
+            <h3 class="brush-title font-brush text-5xl md:text-6xl text-rice/90 cursor-default select-none whitespace-nowrap">
+              互惠共生
+            </h3>
+          </div>
+          <div class="border-l border-gold/20 pl-6 md:pl-10 py-2">
+            <p class="text-rice/60 text-sm sm:text-base leading-loose tracking-wide font-light">
               與客戶、合作夥伴及社會環境共創價值，追求多方共贏且隱密和諧的永續發展模式。
             </p>
           </div>
         </div>
         
-        <div class="flex gap-6 items-start group">
-          <span class="text-gold font-medium text-sm mt-1 shrink-0 border border border-gold/20 px-2 py-0.5 bg-[#0c1622]/30">參</span>
-          <div class="pb-2 w-full">
-            <h3 class="text-rice tracking-wider text-base font-medium mb-3 group-hover:text-gold transition-colors duration-300">超越期待</h3>
-            <p class="text-rice/50 text-sm leading-loose tracking-wide font-light">
+        <div class="grid md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-center group">
+          <div class="text-left md:text-right">
+            <h3 class="brush-title font-brush text-5xl md:text-6xl text-rice/90 cursor-default select-none whitespace-nowrap">
+              超越期待
+            </h3>
+          </div>
+          <div class="border-l border-gold/20 pl-6 md:pl-10 py-2">
+            <p class="text-rice/60 text-sm sm:text-base leading-loose tracking-wide font-light">
               不僅完美完成客戶所託，更主動優化細節、融入空間美學，持續創造驚艷的頂級保障。
             </p>
           </div>
@@ -196,7 +242,7 @@
     </div>
   </section>
 
-  <footer class="border-t border-gold/10 py-16 px-6 bg-[#0a1018]">
+  <footer class="border-t border-gold/10 py-16 px-6 bg-[#0a1018]/95 backdrop-blur-md relative z-10">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-3 gap-12 mb-12">
         <div>
@@ -235,24 +281,113 @@
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
 
-      // 安全防錯機制：滾動導覽列
+      // 導覽列自動變色
       window.addEventListener('scroll', () => {
         if (!navbar) return;
-        
         if (window.scrollY > 50) {
-          navbar?.classList.add('nav-scrolled');
+          navbar.classList.add('nav-scrolled');
         } else {
-          navbar?.classList.remove('nav-scrolled');
+          navbar.classList.remove('nav-scrolled');
         }
       });
 
-      // 安全防錯機制：漢堡按鈕聯動開關
+      // 漢堡按鈕開關
       if (menuBtn) {
-        menuBtn?.addEventListener('click', () => {
-          if (!mobileMenu) return;
-          mobileMenu?.classList.toggle('hidden');
+        menuBtn.addEventListener('click', () => {
+          if (mobileMenu) mobileMenu.classList.toggle('hidden');
         });
       }
+
+      // --- 智慧團隊輪播 (Carousel) 控制核心邏輯 ---
+      const track = document.getElementById('carousel-track');
+      const cards = document.querySelectorAll('.carousel-card');
+      const prevBtn = document.getElementById('prev-slide');
+      const nextBtn = document.getElementById('next-slide');
+      const dotsContainer = document.getElementById('carousel-dots');
+      
+      if (!track || cards.length === 0) return;
+
+      let currentIndex = 0;
+      const isMobile = () => window.innerWidth < 768;
+
+      // 動態初始化導覽圓點
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        cards.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-gold w-5' : 'bg-gold/30'}`;
+          dot.setAttribute('aria-label', `前往第 ${index + 1} 個團隊項目`);
+          dot.addEventListener('click', () => updateCarousel(index));
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      // 輪播渲染與毛玻璃狀態更新函數
+      const updateCarousel = (index) => {
+        if (index < 0 || index >= cards.length) return;
+        currentIndex = index;
+
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('button') : [];
+
+        // 更新卡片的焦點與毛玻璃模糊層次
+        cards.forEach((card, i) => {
+          if (i === currentIndex) {
+            card.classList.add('active');
+            card.classList.remove('inactive');
+          } else {
+            card.classList.remove('active');
+            card.classList.add('inactive');
+          }
+        });
+
+        // 更新導覽圓點樣式
+        dots.forEach((dot, i) => {
+          if (i === currentIndex) {
+            dot.classList.add('bg-gold', 'w-5');
+            dot.classList.remove('bg-gold/30');
+          } else {
+            dot.classList.remove('bg-gold', 'w-5');
+            dot.classList.add('bg-gold/30');
+          }
+        });
+
+        // 計算位移排版距離
+        if (isMobile()) {
+          // 手機端以單張 85% 寬度配合 gap 計算
+          const offset = currentIndex * 85;
+          track.style.transform = `translateX(calc(-${offset}% - ${currentIndex * 24}px))`;
+        } else {
+          // 桌機版全面維持置中對齊或標準平移
+          track.style.transform = `translateX(0px)`;
+          // 桌機版不平移，直接原地靠毛玻璃與放大濾鏡製造焦點層次
+        }
+      };
+
+      // 箭頭按鈕監聽
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) newIndex = cards.length - 1;
+          updateCarousel(newIndex);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          let newIndex = currentIndex + 1;
+          if (newIndex >= cards.length) newIndex = 0;
+          updateCarousel(newIndex);
+        });
+      }
+
+      // 監聽視窗變更，保持 RWD 流暢佈局
+      window.addEventListener('resize', () => {
+        updateCarousel(currentIndex);
+      });
+
+      // 初始化第一次輪播顯示
+      updateCarousel(0);
+
     })();
   </script>
 </body>
