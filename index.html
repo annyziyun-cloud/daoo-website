@@ -77,8 +77,8 @@
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
-        <!-- 公司專屬美學 Logo (結合安全盾牌與大禹幾何線條之 SVG) -->
-        <a href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500">
+        <!-- 公司專屬美學 Logo (結合安全盾牌與幾何線條之 SVG) -->
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500">
           <svg class="w-8 h-8 text-[#C8A97E] transition-transform duration-500 group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L3 7V12C3 16.52 6.84 20.74 12 22C17.16 20.74 21 16.52 21 12V7L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M12 6V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -120,6 +120,7 @@
 
   <!-- Hero 主視覺 (已成功替換全新高質感背景圖片) -->
   <section
+    id="hero-section"
     class="relative bg-cover bg-center bg-no-repeat w-full min-h-screen flex flex-col justify-center items-center"
     style="background-image: url('https://images.unsplash.com/photo-1576831371356-d6e9411ae501?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
   >
@@ -235,26 +236,28 @@
   </footer>
 
   <script>
-    // 防錯機制：確保 DOM 元素存在後才綁定事件，避免空值引發指令中斷
-    const navbar = document.getElementById('navbar');
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    (function() {
+      // 安全防錯機制與 Optional Chaining 概念防護
+      const navbar = document.getElementById('navbar');
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-    if (navbar) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('nav-scrolled');
-        } else {
-          navbar.classList.remove('nav-scrolled');
-        }
-      });
-    }
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('nav-scrolled');
+          } else {
+            navbar.classList.remove('nav-scrolled');
+          }
+        });
+      }
 
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    })();
   </script>
 </body>
 </html>
