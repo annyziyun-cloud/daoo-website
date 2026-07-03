@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>關於我們｜大禹防災科技有限公司</title>
   <meta name="description" content="認識大禹防災科技團隊 — 消防設備師、消防設備士與建築師的專業組合。">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,116 +24,171 @@
       },
     };
   </script>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 修正自訂 CSS 與動態效果 */
+    .nav-scrolled {
+      background-color: rgba(12, 22, 34, 0.9) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 169, 126, 0.1);
+      height: 4.5rem !important;
+    }
+    .nav-scrolled .flex {
+      height: 4.5rem !important;
+    }
+    .gold-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, #C8A97E, transparent);
+    }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(200, 169, 126, 0.2), transparent);
+    }
+    /* 日系柔和淡入動畫 */
+    .animate-fade-in {
+      animation: fadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      opacity: 0;
+    }
+    .animate-delay-1 { animation-delay: 0.3s; }
+    .animate-delay-2 { animation-delay: 0.6s; }
+    .animate-delay-3 { animation-delay: 0.9s; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* 毛玻璃卡片懸停微互動 */
+    .glass-card-hover {
+      background-color: rgba(12, 22, 34, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(200, 169, 126, 0.15);
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .glass-card-hover:hover {
+      transform: translateY(-5px);
+      background-color: rgba(12, 22, 34, 0.75);
+      border-color: rgba(200, 169, 126, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+  </style>
 </head>
-<body class="font-serif bg-obsidian text-rice">
+<body class="font-serif bg-obsidian text-rice tracking-wide">
 
-  <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-scrolled transition-all duration-300">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="text-gold text-lg tracking-widest font-medium">大禹防災</a>
+      <div class="flex items-center justify-between h-20 transition-all duration-500">
+        
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500">
+          <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+          <span class="hidden sm:block">大禹防災科技有限公司</span>
+        </a>
+
         <div class="hidden md:flex items-center gap-10">
-          <a href="index.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">首頁</a>
-          <a href="about.html" class="nav-link text-gold text-sm tracking-wider">關於我們</a>
-          <a href="services.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">服務項目</a>
-          <a href="portfolio.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">工程實績</a>
-          <a href="contact.html" class="nav-link text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">聯絡諮詢</a>
+          <a href="index.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">首頁</a>
+          <a href="about.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">關於我們</a>
+          <a href="services.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
+          <a href="portfolio.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">工程實績</a>
+          <a href="contact.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
         </div>
-        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="開啟選單">
-          <span class="hamburger-line block w-6 h-px bg-gold"></span>
-          <span class="hamburger-line block w-6 h-px bg-gold"></span>
-          <span class="hamburger-line block w-6 h-px bg-gold"></span>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
+          <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
+          <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
+          <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-obsidian/98 border-t border-gold/10">
-      <div class="px-6 py-8 flex flex-col gap-6">
-        <a href="index.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">首頁</a>
-        <a href="about.html" class="text-gold text-sm tracking-wider">關於我們</a>
-        <a href="services.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">服務項目</a>
-        <a href="portfolio.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">工程實績</a>
-        <a href="contact.html" class="text-rice/70 hover:text-gold transition-colors text-sm tracking-wider">聯絡諮詢</a>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0c1622]/98 backdrop-blur-md border-t border-[#C8A97E]/10 absolute w-full left-0 top-full">
+      <div class="px-6 py-8 flex flex-col gap-6 text-center">
+        <a href="index.html" class="text-[#E5E0D8] text-sm tracking-wider">首頁</a>
+        <a href="about.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8">關於我們</a>
+        <a href="services.html" class="text-[#E5E0D8] text-sm tracking-wider">服務項目</a>
+        <a href="portfolio.html" class="text-[#E5E0D8] text-sm tracking-wider">工程實績</a>
+        <a href="contact.html" class="text-[#E5E0D8] text-sm tracking-wider">聯絡諮詢</a>
       </div>
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <section class="pt-40 pb-20 px-6">
+  <section class="pt-48 pb-20 px-6 bg-gradient-to-b from-[#0c1622]/50 to-transparent relative">
     <div class="max-w-6xl mx-auto text-center">
-      <div class="gold-line mx-auto mb-8"></div>
-      <p class="text-gold text-xs tracking-[0.3em] mb-4">ABOUT US</p>
-      <h1 class="text-3xl md:text-4xl font-light tracking-widest">關於我們</h1>
-      <p class="mt-6 text-rice/50 text-sm tracking-wider max-w-xl mx-auto leading-loose">
+      <div class="gold-line mx-auto mb-8 animate-fade-in"></div>
+      <p class="text-gold text-xs tracking-[0.3em] mb-4 animate-fade-in animate-delay-1">ABOUT US</p>
+      <h1 class="text-3xl md:text-4xl font-light tracking-widest text-rice animate-fade-in animate-delay-1">關於我們</h1>
+      <p class="mt-6 text-rice/60 text-sm md:text-base tracking-wider max-w-xl mx-auto leading-loose font-light animate-fade-in animate-delay-2">
         匯聚跨領域專業，以誠信為基石，創造超越期待的防災解決方案
       </p>
     </div>
   </section>
 
-  <!-- Team Section -->
-  <section class="py-16 px-6">
+  <section class="py-16 px-6 bg-[#0c1622]/20 relative">
     <div class="max-w-6xl mx-auto">
       <div class="section-divider mb-20"></div>
-      <h2 class="text-gold text-xs tracking-[0.3em] mb-12">PROFESSIONAL TEAM</h2>
+      <p class="text-gold text-xs tracking-[0.3em] mb-3">PROFESSIONAL TEAM</p>
+      <h2 class="text-2xl md:text-3xl font-light tracking-wider mb-12 text-rice">精銳團隊・美學防災</h2>
+      
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-walnut p-10 card-hover">
-          <div class="w-12 h-px bg-gold mb-8"></div>
-          <h3 class="text-lg tracking-wider mb-4">消防設備師</h3>
-          <p class="text-rice/60 text-sm leading-loose tracking-wide">
-            具備約二十年豐富實務經驗，主導消防工程之規劃設計與技術審查，確保每一項方案皆符合最高安全標準與法規要求。
+        <div class="glass-card-hover p-10 relative overflow-hidden group">
+          <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
+          <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">消防設備師</h3>
+          <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+            具備近二十年豐富實務經驗，主導消防工程之規劃設計與技術審查，確保每一項方案皆符合最高安全標準與法規要求。
           </p>
         </div>
-        <div class="bg-walnut p-10 card-hover">
-          <div class="w-12 h-px bg-gold mb-8"></div>
-          <h3 class="text-lg tracking-wider mb-4">消防設備士</h3>
-          <p class="text-rice/60 text-sm leading-loose tracking-wide">
+        
+        <div class="glass-card-hover p-10 relative overflow-hidden group">
+          <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
+          <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">消防設備士</h3>
+          <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
             負責現場施工狀況之監管與品質把關，從材料選用到工序執行，嚴格確保工程品質與施工安全。
           </p>
         </div>
-        <div class="bg-walnut p-10 card-hover">
-          <div class="w-12 h-px bg-gold mb-8"></div>
-          <h3 class="text-lg tracking-wider mb-4">專屬建築師</h3>
-          <p class="text-rice/60 text-sm leading-loose tracking-wide">
-            提供建築法規之專業釋疑與諮詢，協助客戶順利完成建照、使照及變更使用等行政程序。
+        
+        <div class="glass-card-hover p-10 relative overflow-hidden group">
+          <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
+          <h3 class="text-lg tracking-wider mb-4 font-medium text-rice">專屬建築師</h3>
+          <p class="text-rice/60 text-sm leading-loose tracking-wide font-light">
+            提供建築法規之專業釋疑與諮詢，協助客戶順利完成建照、使照及變更使用等建築行政程序。
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Philosophy Section -->
-  <section class="py-20 px-6 bg-walnut/20">
+  <section class="py-24 px-6 bg-gradient-to-b from-transparent to-[#0c1622]/40">
     <div class="max-w-4xl mx-auto">
       <div class="section-divider mb-16"></div>
-      <h2 class="text-gold text-xs tracking-[0.3em] mb-8 text-center">PHILOSOPHY</h2>
-      <h3 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-12 leading-relaxed">
-        經營理念
-      </h3>
-      <div class="space-y-8">
-        <div class="flex gap-6 items-start">
-          <span class="text-gold text-sm mt-1 shrink-0">壹</span>
-          <div>
-            <h4 class="text-rice tracking-wider mb-2">誠信為本</h4>
-            <p class="text-rice/50 text-sm leading-loose tracking-wide">
-              以誠信作為一切合作的基石，透明溝通、確實履約，建立長久互信的合作關係。
+      <p class="text-gold text-xs tracking-[0.3em] mb-3 text-center">PHILOSOPHY</p>
+      <h2 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-16 text-rice">經營理念</h2>
+      
+      <div class="space-y-12">
+        <div class="flex gap-6 items-start group">
+          <span class="text-gold font-medium text-sm mt-1 shrink-0 border border-gold/20 px-2 py-0.5 bg-[#0c1622]/30">壹</span>
+          <div class="border-b border-white/5 pb-6 w-full">
+            <h3 class="text-rice tracking-wider text-base font-medium mb-3 group-hover:text-gold transition-colors duration-300">誠信為本</h3>
+            <p class="text-rice/50 text-sm leading-loose tracking-wide font-light">
+              以誠信作為一切合作的基石，透明溝通、確實履約，建立長久互信的企業合作關係。
             </p>
           </div>
         </div>
-        <div class="flex gap-6 items-start">
-          <span class="text-gold text-sm mt-1 shrink-0">貳</span>
-          <div>
-            <h4 class="text-rice tracking-wider mb-2">互惠共生</h4>
-            <p class="text-rice/50 text-sm leading-loose tracking-wide">
-              與客戶、合作夥伴及社會環境共創價值，追求多方共贏的永續發展模式。
+        
+        <div class="flex gap-6 items-start group">
+          <span class="text-gold font-medium text-sm mt-1 shrink-0 border border border-gold/20 px-2 py-0.5 bg-[#0c1622]/30">貳</span>
+          <div class="border-b border-white/5 pb-6 w-full">
+            <h3 class="text-rice tracking-wider text-base font-medium mb-3 group-hover:text-gold transition-colors duration-300">互惠共生</h3>
+            <p class="text-rice/50 text-sm leading-loose tracking-wide font-light">
+              與客戶、合作夥伴及社會環境共創價值，追求多方共贏且隱密和諧的永續發展模式。
             </p>
           </div>
         </div>
-        <div class="flex gap-6 items-start">
-          <span class="text-gold text-sm mt-1 shrink-0">參</span>
-          <div>
-            <h4 class="text-rice tracking-wider mb-2">超越期待</h4>
-            <p class="text-rice/50 text-sm leading-loose tracking-wide">
-              不僅完成客戶所託，更主動思考、精進細節，持續創造優於客戶期待的成果。
+        
+        <div class="flex gap-6 items-start group">
+          <span class="text-gold font-medium text-sm mt-1 shrink-0 border border border-gold/20 px-2 py-0.5 bg-[#0c1622]/30">參</span>
+          <div class="pb-2 w-full">
+            <h3 class="text-rice tracking-wider text-base font-medium mb-3 group-hover:text-gold transition-colors duration-300">超越期待</h3>
+            <p class="text-rice/50 text-sm leading-loose tracking-wide font-light">
+              不僅完美完成客戶所託，更主動優化細節、融入空間美學，持續創造驚艷的頂級保障。
             </p>
           </div>
         </div>
@@ -140,20 +196,19 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-gold/10 py-16 px-6">
+  <footer class="border-t border-gold/10 py-16 px-6 bg-[#0a1018]">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-3 gap-12 mb-12">
         <div>
-          <p class="text-gold text-lg tracking-widest mb-4">大禹防災</p>
-          <p class="text-rice/40 text-xs tracking-wider leading-loose">
+          <p class="text-gold text-base tracking-widest mb-4">大禹防災</p>
+          <p class="text-rice/40 text-xs tracking-wider leading-loose font-light">
             大禹防災科技有限公司<br>
             以美學為出發點的頂級消防科技
           </p>
         </div>
         <div>
           <p class="text-gold text-xs tracking-[0.2em] mb-4">聯絡資訊</p>
-          <p class="text-rice/50 text-xs tracking-wider leading-loose">
+          <p class="text-rice/50 text-xs tracking-wider leading-loose font-light">
             台北市內湖區民權東路六段180巷6號8樓之8<br>
             電話：02-8791-6620<br>
             傳真：02-8791-6720
@@ -162,31 +217,43 @@
         <div>
           <p class="text-gold text-xs tracking-[0.2em] mb-4">快速連結</p>
           <div class="flex flex-col gap-2">
-            <a href="about.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">關於我們</a>
-            <a href="services.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">服務項目</a>
-            <a href="portfolio.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">工程實績</a>
-            <a href="contact.html" class="text-rice/50 hover:text-gold text-xs tracking-wider transition-colors">聯絡諮詢</a>
+            <a href="about.html" class="text-rice/40 hover:text-gold text-xs tracking-wider transition-colors duration-300">關於我們</a>
+            <a href="services.html" class="text-rice/40 hover:text-gold text-xs tracking-wider transition-colors duration-300">服務項目</a>
+            <a href="portfolio.html" class="text-rice/40 hover:text-gold text-xs tracking-wider transition-colors duration-300">工程實績</a>
+            <a href="contact.html" class="text-rice/40 hover:text-gold text-xs tracking-wider transition-colors duration-300">聯絡諮詢</a>
           </div>
         </div>
       </div>
       <div class="section-divider mb-8"></div>
-      <p class="text-rice/30 text-xs tracking-wider text-center">© 2026 大禹防災科技有限公司 All Rights Reserved.</p>
+      <p class="text-rice/30 text-xs tracking-wider text-center font-light">© 2026 大禹防災科技有限公司 All Rights Reserved.</p>
     </div>
   </footer>
 
   <script>
-    const navbar = document.getElementById('navbar');
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    (function() {
+      const navbar = document.getElementById('navbar');
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
-    });
+      // 安全防錯機制：滾動導覽列
+      window.addEventListener('scroll', () => {
+        if (!navbar) return;
+        
+        if (window.scrollY > 50) {
+          navbar?.classList.add('nav-scrolled');
+        } else {
+          navbar?.classList.remove('nav-scrolled');
+        }
+      });
 
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('hamburger-active');
-      mobileMenu.classList.toggle('hidden');
-    });
+      // 安全防錯機制：漢堡按鈕聯動開關
+      if (menuBtn) {
+        menuBtn?.addEventListener('click', () => {
+          if (!mobileMenu) return;
+          mobileMenu?.classList.toggle('hidden');
+        });
+      }
+    })();
   </script>
 </body>
 </html>
