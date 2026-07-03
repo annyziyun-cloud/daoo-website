@@ -258,7 +258,7 @@
       <div class="section-divider mb-8"></div>
       <p class="text-rice/30 text-xs tracking-wider text-center font-light">© 2026 大禹防災科技有限公司 All Rights Reserved.</p>
     </div>
-  </footer>
+  </section>
 
   <script>
     (function() {
@@ -329,6 +329,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               const targetCard = entry.target;
+              if (!targetCard) return;
               
               // 1. 觸發卡片的「向上浮動」且「漸變出現」視差樣式
               targetCard.classList.add('revealed');
