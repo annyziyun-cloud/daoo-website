@@ -20,6 +20,9 @@
           fontFamily: {
             serif: ['"Noto Serif TC"', 'serif'],
           },
+          screens: {
+            'xs': '375px',
+          },
         },
       },
     };
@@ -94,7 +97,7 @@
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
-        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 text-[#C8A97E] text-base sm:text-lg tracking-[0.2em] font-medium transition-all duration-500">
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 text-[#C8A97E] text-sm xs:text-base sm:text-lg tracking-[0.2em] font-medium transition-all duration-500">
           <img src="logo.png" alt="daoo Logo" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           <span class="hidden xs:block">大禹防災科技</span>
         </a>
@@ -134,11 +137,11 @@
     <div class="absolute inset-0 bg-[#0c1622]/85"></div>
 
     <div class="relative z-10 text-center px-2 max-w-4xl mx-auto">
-      <div class="gold-line mx-auto mb-8 sm:mb-10 html-fix animation-fade-in"></div>
+      <div class="gold-line mx-auto mb-8 sm:mb-10 animation-fade-in"></div>
       <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.12em] sm:tracking-[0.15em] leading-snug sm:leading-[1.7] md:leading-[1.8] text-rice animate-fade-in animate-delay-1">
         始於誠信的守護，<br class="hidden sm:block">精於美學的防災科技。
       </h1>
-      <p class="mt-6 sm:mt-8 text-xs sm:text-sm md:text-base font-light text-[#E5E0D8]/70 tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed sm:leading-loose animate-fade-in animate-delay-2">
+      <p class="mt-6 sm:mt-8 text-xs sm:text-sm md:text-base font-light text-[#E5E0D8]/70 tracking-[0.12em] sm:tracking-[0.2em] leading-relaxed sm:leading-loose animate-fade-in animate-delay-2">
         秉持體貼與專業熱忱，從圖面審查到工程施作的一站式保障
       </p>
       <div class="mt-10 sm:mt-12 animate-fade-in animate-delay-3">
@@ -160,7 +163,7 @@
     <div class="max-w-6xl mx-auto">
       <div class="section-divider mb-16 sm:mb-20"></div>
       <div class="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
-        <div class="px-2 sm:px-0">
+        <div class="px-2 sm:px-0 text-left">
           <p class="text-gold text-xs tracking-[0.3em] mb-4">ABOUT US</p>
           <h2 class="text-xl sm:text-2xl md:text-3xl font-light tracking-wider leading-relaxed mb-6">
             專業團隊，<br>守護每一處空間
@@ -171,25 +174,25 @@
         </div>
         
         <div class="grid grid-cols-2 gap-3 sm:gap-4">
-          <div class="card-light p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0s;">
-            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">
+          <div class="card-light p-3 xs:p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0s;">
+            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1">
               <span class="animate-counter" data-target="20">0</span>+
             </p>
-            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider">年專業經驗</p>
+            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider font-medium">年專業經驗</p>
           </div>
-          <div class="card-light p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0.15s;">
-            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">
+          <div class="card-light p-3 xs:p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0.15s;">
+            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1">
               <span class="animate-counter" data-target="100">0</span>+
             </p>
-            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider">完成工程案</p>
+            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider font-medium">完成工程案</p>
           </div>
-          <div class="card-light p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0.3s;">
-            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">全台</p>
-            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider">服務範圍</p>
+          <div class="card-light p-3 xs:p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0.3s;">
+            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1">全台</p>
+            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider font-medium">服務範圍</p>
           </div>
-          <div class="card-light p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0.45s;">
-            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1 sm:mb-2">一站整合</p>
-            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider">規劃到驗收</p>
+          <div class="card-light p-3 xs:p-4 sm:p-6 text-center reveal-card" style="transition-delay: 0.45s;">
+            <p class="text-walnut text-xl sm:text-2xl font-semibold mb-1">一站整合</p>
+            <p class="text-obsidian/80 text-[10px] sm:text-xs tracking-wider font-medium">規劃到驗收</p>
           </div>
         </div>
 
@@ -212,11 +215,11 @@
         讓防災，成為空間的一部分
       </h2>
       
-      <p class="text-obsidian/80 text-xs sm:text-base md:text-lg tracking-wide sm:tracking-widest leading-relaxed sm:leading-loose mb-10 sm:mb-12 font-medium max-w-2xl mx-auto drop-shadow-sm">
+      <p class="text-obsidian/80 text-xs sm:text-base md:text-lg tracking-widest leading-loose mb-12 font-medium max-w-2xl mx-auto drop-shadow-sm">
         無論是餐飲空間、展示中心或商業建築，我們以隱密而專業的方式，將消防設備完美融入您的設計願景。
       </p>
       
-      <a href="services.html" class="inline-flex items-center justify-center gap-3 sm:gap-4 bg-obsidian text-gold px-8 sm:px-10 py-3.5 sm:py-4 text-xs tracking-[0.2em] hover:bg-walnut hover:-translate-y-1 shadow-xl hover:shadow-2xl transition-all duration-500 group border border-obsidian/20">
+      <a href="services.html" class="inline-flex items-center justify-center gap-4 bg-obsidian text-gold px-10 py-4 text-xs tracking-[0.2em] hover:bg-walnut hover:-translate-y-1 shadow-xl hover:shadow-2xl transition-all duration-500 group border border-obsidian/20">
         了解服務項目
         <svg class="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -228,14 +231,14 @@
   <footer class="py-12 sm:py-16 px-4 sm:px-6 bg-[#0a1018]">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-3 gap-10 sm:gap-12 mb-12">
-        <div class="px-2 sm:px-0">
+        <div class="px-2 sm:px-0 text-left">
           <p class="text-gold text-base tracking-widest mb-4">大禹防災</p>
           <p class="text-rice/40 text-xs tracking-wider leading-loose font-light">
             大禹防災科技有限公司<br>
             以美學為出發點的頂級消防科技
           </p>
         </div>
-        <div class="px-2 sm:px-0">
+        <div class="px-2 sm:px-0 text-left">
           <p class="text-gold text-xs tracking-[0.2em] mb-4">聯絡資訊</p>
           <p class="text-rice/50 text-xs tracking-wider leading-loose font-light">
             台北市內湖區民權東路六段180巷6號8樓之8<br>
@@ -243,7 +246,7 @@
             傳真：02-8791-6720
           </p>
         </div>
-        <div class="px-2 sm:px-0">
+        <div class="px-2 sm:px-0 text-left">
           <p class="text-gold text-xs tracking-[0.2em] mb-4">快速連結</p>
           <div class="flex flex-col gap-2">
             <a href="about.html" class="text-rice/40 hover:text-gold text-xs tracking-wider transition-colors duration-300">關於我們</a>
@@ -320,7 +323,7 @@
 
         const observerOptions = {
           root: null, // 視窗為基準
-          threshold: 0.1 // 元素進入視窗 15% 時觸發，行動端調小閾值至 10% 更平滑穩定
+          threshold: 0.08 // 行動端調小閾值至 8% 確保在小螢幕手機上完美滑順觸發
         };
 
         const observer = new IntersectionObserver((entries, observerInstance) => {
