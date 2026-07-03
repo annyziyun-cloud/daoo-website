@@ -75,6 +75,18 @@
       background-image: radial-gradient(#3B302B 1px, transparent 1px);
       background-size: 32px 32px;
     }
+    
+    /* 視差與漸變浮動初始狀態 */
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    /* 觸發後的完全呈現狀態 */
+    .reveal-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="font-serif bg-obsidian text-rice tracking-wide">
@@ -159,19 +171,23 @@
         </div>
         
         <div class="grid grid-cols-2 gap-4">
-          <div class="card-light p-6 text-center">
-            <p class="text-walnut text-2xl font-semibold mb-2">20+</p>
+          <div class="card-light p-6 text-center reveal-card" style="transition-delay: 0s;">
+            <p class="text-walnut text-2xl font-semibold mb-2">
+              <span class="animate-counter" data-target="20">0</span>+
+            </p>
             <p class="text-obsidian/80 text-xs tracking-wider">年專業經驗</p>
           </div>
-          <div class="card-light p-6 text-center">
-            <p class="text-walnut text-2xl font-semibold mb-2">100+</p>
+          <div class="card-light p-6 text-center reveal-card" style="transition-delay: 0.15s;">
+            <p class="text-walnut text-2xl font-semibold mb-2">
+              <span class="animate-counter" data-target="100">0</span>+
+            </p>
             <p class="text-obsidian/80 text-xs tracking-wider">完成工程案</p>
           </div>
-          <div class="card-light p-6 text-center">
+          <div class="card-light p-6 text-center reveal-card" style="transition-delay: 0.3s;">
             <p class="text-walnut text-2xl font-semibold mb-2">全台</p>
             <p class="text-obsidian/80 text-xs tracking-wider">服務範圍</p>
           </div>
-          <div class="card-light p-6 text-center">
+          <div class="card-light p-6 text-center reveal-card" style="transition-delay: 0.45s;">
             <p class="text-walnut text-2xl font-semibold mb-2">一條龍</p>
             <p class="text-obsidian/80 text-xs tracking-wider">規劃到驗收</p>
           </div>
@@ -267,6 +283,80 @@
           mobileMenu?.classList.toggle('hidden');
         });
       }
+
+      // --- 全新動態升級：滾動觸發計數與視差浮動 ---
+      
+      // 緩動減速演算法 (Ease-out)
+      const animateCount = (element) => {
+        if (!element || element.classList.contains('has-animated')) return;
+        element.classList.add('has-animated'); // 防止重複觸發開關
+
+        const target = parseInt(element.getAttribute('data-target') || '0', 10);
+        const duration = 2000; // 動態演進總長度 2 秒
+        const startTime = performance.now();
+
+        const updateNumber = (currentTime) => {
+          const elapsedTime = currentTime - startTime;
+          
+          if (elapsedTime >= duration) {
+            element.textContent = target;
+            return;
+          }
+
+          const progress = elapsedTime / duration;
+          // Ease Out Quad 緩動公式：讓數字在接近目標時平滑減速
+          const easeProgress = progress * (2 - progress);
+          const currentCount = Math.floor(easeProgress * target);
+          
+          element.textContent = currentCount;
+          requestAnimationFrame(updateNumber);
+        };
+
+        requestAnimationFrame(updateNumber);
+      };
+
+      // 使用原生先進的 IntersectionObserver 進行視窗交錯監聽
+      const initRevealAnimations = () => {
+        const cards = document.querySelectorAll('.reveal-card');
+        if (cards.length === 0) return;
+
+        const observerOptions = {
+          root: null, // 視窗為基準
+          threshold: 0.15 // 元素進入視窗 15% 時觸發
+        };
+
+        const observer = new IntersectionObserver((entries, observerInstance) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const targetCard = entry.target;
+              
+              // 1. 觸發卡片的「向上浮動」且「漸變出現」視差樣式
+              targetCard.classList.add('revealed');
+
+              // 2. 同步尋找卡片內部是否有數字計數器，若有則啟動數字滾動
+              const counterSpan = targetCard.querySelector('.animate-counter');
+              if (counterSpan) {
+                animateCount(counterSpan);
+              }
+
+              // 觸發後即解除該卡片的監聽，優化瀏覽器記憶體效能
+              observerInstance.unobserve(targetCard);
+            }
+          });
+        }, observerOptions);
+
+        cards.forEach(card => {
+          if (card) observer.observe(card);
+        });
+      };
+
+      // 確保 DOM 載入後穩定啟動
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRevealAnimations);
+      } else {
+        initRevealAnimations();
+      }
+
     })();
   </script>
 </body>
