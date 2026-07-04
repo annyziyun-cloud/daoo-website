@@ -30,13 +30,13 @@
     };
   </script>
   <style>
-    /* 修正導覽列動態效果 */
+    /* 修正導覽列動態效果：頂級微透毛玻璃質感 */
     .nav-scrolled {
-      background-color: rgba(255, 255, 255, 0.85) !important;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* 改為淺灰邊線 */
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* 增加微陰影提升立體感 */
+      background-color: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important; /* 模擬玻璃邊緣反光 */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* 柔和的玻璃擴散陰影 */
       height: 4.5rem !important;
     }
     .nav-scrolled .flex {
@@ -122,20 +122,17 @@
   <div class="fixed inset-0 bg-gradient-to-b from-[#080f1a]/95 via-transparent to-[#080f1a]/80 pointer-events-none z-0"></div>
   <!-- ========================================================= -->
 
-  <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 transition-all duration-500 ease-in-out h-20">
+  <!-- Navbar (微透毛玻璃優化版) -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-xl backdrop-saturate-150 border-b border-white/40 transition-all duration-500 ease-in-out h-20 shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-20">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
-        <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#C8A97E] text-lg tracking-[0.2em] font-medium transition-all duration-500">
-          <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
-          <span class="hidden sm:block">大禹防災科技</span>
-        </a>
-
+        <!-- 品牌 Logo -->
         <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#AF8953] text-lg tracking-[0.2em] transition-all duration-500">
           <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           <span class="hidden sm:block text-slate-900 font-bold">大禹防災科技</span>
         </a>
 
+        <!-- 電腦版選單 -->
         <div class="hidden md:flex items-center gap-10">
           <a href="index.html" class="text-slate-800 hover:text-[#AF8953] hover:underline underline-offset-8 decoration-[#AF8953]/40 text-sm tracking-wider transition-all duration-300 font-medium">首頁</a>
           <a href="about.html" class="text-[#AF8953] font-bold text-sm tracking-wider underline underline-offset-8 decoration-[#AF8953]/60 transition-all duration-300">關於我們</a>
@@ -144,6 +141,7 @@
           <a href="contact.html" class="text-slate-800 hover:text-[#AF8953] hover:underline underline-offset-8 decoration-[#AF8953]/40 text-sm tracking-wider transition-all duration-300 font-medium">聯絡諮詢</a>
         </div>
 
+        <!-- 手機版漢堡按鈕 -->
         <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
           <span class="block w-6 h-px bg-slate-800 transition-all duration-300"></span>
           <span class="block w-6 h-px bg-slate-800 transition-all duration-300"></span>
@@ -152,7 +150,8 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-black/10 absolute w-full left-0 top-full z-10 shadow-xl">
+    <!-- 手機版展開選單 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-xl border-t border-white/50 absolute w-full left-0 top-full z-10 shadow-xl">
       <div class="px-6 py-8 flex flex-col gap-6 text-center">
         <a href="index.html" class="text-slate-800 font-medium text-sm tracking-wider">首頁</a>
         <a href="about.html" class="text-[#AF8953] font-bold text-sm tracking-wider underline underline-offset-8">關於我們</a>
