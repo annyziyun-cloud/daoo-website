@@ -24,6 +24,15 @@
     };
   </script>
   <style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+  }
+</style>
     /* 全域背景與深藍色半透明遮罩 */
     body {
       background: linear-gradient(rgba(10, 17, 40, 0.88), rgba(10, 17, 40, 0.88)), 
