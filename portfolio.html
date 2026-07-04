@@ -41,23 +41,6 @@
       background-color: #0A1128;
     }
 
-    /* 日式動畫標題 Fade-in 效果 (模糊對焦 + 緩慢浮現) */
-    @keyframes animeFadeIn {
-      0% {
-        opacity: 0;
-        filter: blur(12px);
-        transform: translateY(15px) scale(0.98);
-      }
-      100% {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0) scale(1);
-      }
-    }
-    .anime-title-fade {
-      animation: animeFadeIn 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    }
-
     /* 客製化樣式與過渡動畫 */
     .gold-line {
       width: 2px;
