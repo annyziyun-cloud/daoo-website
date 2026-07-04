@@ -24,14 +24,14 @@
     };
   </script>
   <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    opacity: 0;
-  }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      opacity: 0;
+    }
 
     /* 全域背景與深藍色半透明遮罩 */
     body {
@@ -40,6 +40,24 @@
       background-size: cover;
       background-color: #0A1128;
     }
+
+    /* 日式動畫標題 Fade-in 效果 (模糊對焦 + 緩慢浮現) */
+    @keyframes animeFadeIn {
+      0% {
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(15px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+      }
+    }
+    .anime-title-fade {
+      animation: animeFadeIn 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
     /* 客製化樣式與過渡動畫 */
     .gold-line {
       width: 2px;
@@ -126,9 +144,10 @@
     <div class="max-w-6xl mx-auto text-center">
       <div class="gold-line mx-auto mb-8"></div>
       <p class="text-gold text-xs tracking-[0.3em] mb-4">PORTFOLIO</p>
-      <!-- 加入 anime-title-fade 類別，實現日式動畫感 Fade-in -->
-      <h1 class="text-3xl md:text-4xl font-light tracking-widest anime-title-fade">工程實績</h1>
-      <p class="mt-6 text-rice/60 text-sm tracking-wider max-w-xl mx-auto leading-loose">
+      <!-- 加入 font-bold 使標題變粗 -->
+      <h1 class="text-3xl md:text-4xl font-bold tracking-widest anime-title-fade">工程實績</h1>
+      <!-- 放大文字至 text-lg md:text-xl 並加深對比，提升閱讀體驗 -->
+      <p class="mt-6 text-rice/90 text-lg md:text-xl tracking-wider max-w-2xl mx-auto leading-loose font-medium">
         以隱密而專業的方式，為指標性品牌打造無形的頂級防護
       </p>
     </div>
