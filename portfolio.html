@@ -24,10 +24,32 @@
     };
   </script>
   <style>
-    /* 客製化樣式與過渡動畫 */
+    /* 全域背景與深藍色半透明遮罩 */
     body {
+      background: linear-gradient(rgba(10, 17, 40, 0.88), rgba(10, 17, 40, 0.88)), 
+                  url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
       background-color: #0A1128;
     }
+
+    /* 日式動畫標題 Fade-in 效果 (模糊對焦 + 緩慢浮現) */
+    @keyframes animeFadeIn {
+      0% {
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(15px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+      }
+    }
+    .anime-title-fade {
+      animation: animeFadeIn 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    /* 客製化樣式與過渡動畫 */
     .gold-line {
       width: 2px;
       height: 40px;
@@ -110,7 +132,8 @@
     <div class="max-w-6xl mx-auto text-center">
       <div class="gold-line mx-auto mb-8"></div>
       <p class="text-gold text-xs tracking-[0.3em] mb-4">PORTFOLIO</p>
-      <h1 class="text-3xl md:text-4xl font-light tracking-widest">工程實績</h1>
+      <!-- 加入 anime-title-fade 類別，實現日式動畫感 Fade-in -->
+      <h1 class="text-3xl md:text-4xl font-light tracking-widest anime-title-fade">工程實績</h1>
       <p class="mt-6 text-rice/60 text-sm tracking-wider max-w-xl mx-auto leading-loose">
         以隱密而專業的方式，為指標性品牌打造無形的頂級防護
       </p>
@@ -139,7 +162,7 @@
 
         <!-- 1. 餐飲集團 -->
         <div class="portfolio-item group cursor-pointer" data-category="food">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">馬辣國際餐飲</h3>
@@ -147,7 +170,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="food">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">全家國際餐飲（大戶屋）</h3>
@@ -155,7 +178,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="food">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">食其家 SUKIYA</h3>
@@ -163,7 +186,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="food">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">梵燒肉</h3>
@@ -171,7 +194,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="food">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">赫士盟集團</h3>
@@ -180,7 +203,7 @@
 
         <!-- 2. 商業與百貨 -->
         <div class="portfolio-item group cursor-pointer" data-category="retail">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">綺麗館</h3>
@@ -188,7 +211,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="retail">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">小北百貨</h3>
@@ -196,7 +219,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="retail">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">誠品生活集團</h3>
@@ -205,7 +228,7 @@
 
         <!-- 3. 科技與企業 -->
         <div class="portfolio-item group cursor-pointer" data-category="tech">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">和碩聯合科技</h3>
@@ -213,7 +236,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="tech">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">日月光集團</h3>
@@ -221,7 +244,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="tech">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">FaceBook</h3>
@@ -229,7 +252,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="tech">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">木棉花國際</h3>
@@ -237,7 +260,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="tech">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">美商栢誠工程顧問</h3>
@@ -245,7 +268,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="tech">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">台灣證券交易所</h3>
@@ -254,7 +277,7 @@
 
         <!-- 4. 醫療與生技 -->
         <div class="portfolio-item group cursor-pointer" data-category="medical">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">SGS 加美實驗室</h3>
@@ -262,7 +285,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="medical">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">美時化學製藥</h3>
@@ -270,7 +293,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="medical">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">TCI大江生醫</h3>
@@ -278,7 +301,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="medical">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">臺安醫院</h3>
@@ -287,7 +310,7 @@
 
         <!-- 5. 汽車展示 -->
         <div class="portfolio-item group cursor-pointer" data-category="auto">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">AUDI 展示中心</h3>
@@ -295,7 +318,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="auto">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">LEXUS 展示中心</h3>
@@ -304,7 +327,7 @@
 
         <!-- 6. 休閒與機構 -->
         <div class="portfolio-item group cursor-pointer" data-category="institutions">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">世界宗教博物館</h3>
@@ -312,7 +335,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="institutions">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">創價基金會</h3>
@@ -320,7 +343,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="institutions">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">龍巖真龍殿</h3>
@@ -328,7 +351,7 @@
         </div>
 
         <div class="portfolio-item group cursor-pointer" data-category="institutions">
-          <div class="bg-navy-light rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
+          <div class="bg-navy-light/80 backdrop-blur-sm rounded-sm aspect-[4/3] mb-5 overflow-hidden border border-gold/10 group-hover:border-gold/40 transition-colors relative flex items-center justify-center">
             <span class="text-rice/20 text-xs tracking-widest">Image Placeholder</span>
           </div>
           <h3 class="text-sm tracking-wider group-hover:text-gold transition-colors">神旺集團</h3>
@@ -340,7 +363,7 @@
   </section>
 
   <!-- Clients List (Logo Wall) -->
-  <section class="py-24 px-6 bg-navy-light/50 border-y border-gold/10">
+  <section class="py-24 px-6 bg-navy-light/30 backdrop-blur-md border-y border-gold/10">
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-gold text-xs tracking-[0.4em] mb-16 uppercase">Trusted By</h2>
       
@@ -388,7 +411,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-16 px-6">
+  <footer class="py-16 px-6 bg-deep-blue/80 backdrop-blur-md">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-3 gap-12 mb-12">
         <div>
