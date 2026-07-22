@@ -32,7 +32,7 @@
        導覽列樣式與動態效果 (微透白毛玻璃升級版)
        ========================================= */
     
-    /* 預設狀態文字顏色 */
+    /* --- 1. 選單文字顏色設定 --- */
     .nav-text {
       color: rgba(229, 224, 216, 0.8); /* 淺米色 (#E5E0D8/80) */
     }
@@ -40,7 +40,17 @@
       color: #C8A97E; /* 懸停金色 */
     }
 
-    /* 滾動後的頂級微透白毛玻璃質感 */
+    /* --- 2. Logo 文字與漢堡選單顏色設定 --- */
+    .logo-text {
+      color: #C8A97E; /* 未滾動時：金色 */
+      transition: color 0.5s ease-in-out;
+    }
+    .hamburger-line {
+      background-color: #C8A97E; /* 未滾動時：金色 */
+      transition: background-color 0.5s ease-in-out;
+    }
+
+    /* --- 3. 滾動後的頂級微透白毛玻璃質感 --- */
     .nav-scrolled {
       background-color: rgba(255, 255, 255, 0.65) !important;
       backdrop-filter: saturate(180%) blur(24px);
@@ -53,15 +63,22 @@
       height: 4.5rem !important;
     }
     
-    /* 滾動後白底黑字，確保對比度 */
+    /* 滾動後：白底黑字，確保對比度完全清晰 */
     .nav-scrolled .nav-text {
-      color: #3B302B; /* 深胡桃木色 */
+      color: #3B302B; /* 選單文字：深胡桃木色 */
     }
     .nav-scrolled .nav-text:hover {
       color: #C8A97E; /* 懸停金色 */
     }
+    .nav-scrolled .logo-text {
+      color: #3B302B; /* Logo文字：深胡桃木色 */
+      font-weight: 700; /* 白底時微加粗，提升易讀性 */
+    }
+    .nav-scrolled .hamburger-line {
+      background-color: #3B302B; /* 漢堡選單：深胡桃木色 */
+    }
 
-    /* 手機版下拉選單：對齊白毛玻璃質感 */
+    /* --- 4. 手機版下拉選單：對齊白毛玻璃質感 --- */
     .mobile-menu-glass {
       background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: saturate(180%) blur(24px);
@@ -142,23 +159,25 @@
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
-        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 text-[#C8A97E] text-sm xs:text-base sm:text-lg tracking-[0.2em] font-medium transition-all duration-500">
+        <!-- Logo 區塊：移除寫死的 Tailwind 金色，改用 logo-text 類別交由 CSS 動態控制 -->
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 logo-text text-sm xs:text-base sm:text-lg tracking-[0.2em] font-medium transition-all duration-500">
           <img src="logo.png" alt="daoo Logo" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           <span class="hidden xs:block">大禹防災科技</span>
         </a>
 
         <div class="hidden md:flex items-center gap-6 lg:gap-10">
-          <a href="index.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">首頁</a>
+          <a href="index.html" class="logo-text text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">首頁</a>
           <a href="about.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">關於我們</a>
           <a href="services.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
           <a href="portfolio.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">工程實績</a>
           <a href="contact.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
         </div>
 
+        <!-- 漢堡選單：移除寫死的 Tailwind 金色，改用 hamburger-line 類別交由 CSS 動態控制 -->
         <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
-          <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
-          <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
-          <span class="block w-6 h-px bg-[#C8A97E] transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
         </button>
       </div>
     </div>
@@ -312,7 +331,6 @@
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
 
-      // 安全防錯機制與 Optional Chaining 概念防護
       window.addEventListener('scroll', () => {
         if (!navbar) return;
         
@@ -329,10 +347,7 @@
           mobileMenu?.classList.toggle('hidden');
         });
       }
-
-      // --- 全新動態升級：滾動觸發計數與視差浮動 ---
       
-      // 緩動減速演算法 (Ease-out)
       const animateCount = (element) => {
         if (!element || element.classList.contains('has-animated')) return;
         element.classList.add('has-animated');
@@ -360,7 +375,6 @@
         requestAnimationFrame(updateNumber);
       };
 
-      // 使用原生先進的 IntersectionObserver 進行視窗交錯監聽
       const initRevealAnimations = () => {
         const cards = document.querySelectorAll('.reveal-card');
         if (cards.length === 0) return;
@@ -393,7 +407,6 @@
         });
       };
 
-      // 確保 DOM 載入後穩定啟動
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initRevealAnimations);
       } else {
