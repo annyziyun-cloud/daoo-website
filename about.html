@@ -30,18 +30,66 @@
     };
   </script>
   <style>
-    /* 修正導覽列動態效果：頂級微透毛玻璃質感 */
+    /* =========================================
+       導覽列樣式與動態效果 (全站一致微透白毛玻璃)
+       ========================================= */
+    .nav-text {
+      color: rgba(229, 224, 216, 0.8);
+    }
+    .nav-text:hover {
+      color: #C8A97E;
+    }
+    .logo-text {
+      color: #C8A97E;
+      transition: color 0.5s ease-in-out;
+    }
+    .hamburger-line {
+      background-color: #C8A97E;
+      transition: background-color 0.5s ease-in-out;
+    }
+
     .nav-scrolled {
       background-color: rgba(255, 255, 255, 0.65) !important;
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important; /* 模擬玻璃邊緣反光 */
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* 柔和的玻璃擴散陰影 */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       height: 4.5rem !important;
     }
     .nav-scrolled .flex {
       height: 4.5rem !important;
     }
+    .nav-scrolled .nav-text {
+      color: #3B302B;
+    }
+    .nav-scrolled .nav-text:hover {
+      color: #C8A97E;
+    }
+    .nav-scrolled .logo-text {
+      color: #3B302B;
+      font-weight: 700;
+    }
+    .nav-scrolled .hamburger-line {
+      background-color: #3B302B;
+    }
+
+    .mobile-menu-glass {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+    .mobile-menu-glass .nav-text {
+      color: #3B302B;
+    }
+    .mobile-menu-glass .nav-text:hover {
+      color: #C8A97E;
+    }
+
+    /* =========================================
+       頁面裝飾與動畫效果
+       ========================================= */
     .gold-line {
       width: 1px;
       height: 100px;
@@ -51,6 +99,7 @@
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(200, 169, 126, 0.2), transparent);
     }
+    
     /* 日系柔和淡入動畫 */
     .animate-fade-in {
       animation: fadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -77,7 +126,6 @@
     .carousel-card {
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    /* 未選中狀態：加強毛玻璃模糊、大幅度向後壓縮、超低不透明度 */
     .carousel-card.inactive {
       opacity: 0.15;
       transform: scale(0.88);
@@ -87,7 +135,6 @@
       pointer-events: none;
       z-index: 0;
     }
-    /* 選中焦點狀態：完全清晰、大幅度向前巨大化突圍、金色立體光芒四射 */
     .carousel-card.active {
       opacity: 1;
       transform: scale(1.15);
@@ -110,54 +157,50 @@
     }
   </style>
 </head>
-<!-- 加入 bg-fixed 製造視差背景感 -->
 <body class="font-serif bg-[#080f1a] text-rice tracking-wide bg-fixed bg-cover bg-center relative" 
       style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&auto=format&fit=crop&q=80');">
 
-  <!-- ================= 全新雙層高品質遮罩系統 ================= -->
-  <!-- 底層遮罩：極高不透明度 (90%) 的深邃夜藍色，強制壓暗過亮的背景圖 -->
+  <!-- 雙層高品質遮罩系統 -->
   <div class="fixed inset-0 bg-[#080f1a]/90 pointer-events-none z-0"></div>
-  
-  <!-- 漸層疊加層：由上而下加深藍調，確保導覽列與首屏標題區域對比度極致清晰 -->
   <div class="fixed inset-0 bg-gradient-to-b from-[#080f1a]/95 via-transparent to-[#080f1a]/80 pointer-events-none z-0"></div>
-  <!-- ========================================================= -->
 
-  <!-- Navbar (微透毛玻璃優化版) -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-xl backdrop-saturate-150 border-b border-white/40 transition-all duration-500 ease-in-out h-20 shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-20">
+  <!-- Navbar (透明 -> 滾動微透白毛玻璃) -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
+        
         <!-- 品牌 Logo -->
-        <a id="brand-logo" href="index.html" class="group flex items-center gap-3 text-[#AF8953] text-lg tracking-[0.2em] transition-all duration-500">
-          <img src="logo.png" alt="daoo Logo" class="h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
-          <span class="hidden sm:block text-slate-900 font-bold">大禹防災科技</span>
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 logo-text text-sm xs:text-base sm:text-lg tracking-[0.2em] font-medium transition-all duration-500">
+          <img src="logo.png" alt="daoo Logo" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+          <span class="hidden xs:block">大禹防災科技</span>
         </a>
 
         <!-- 電腦版選單 -->
-        <div class="hidden md:flex items-center gap-10">
-          <a href="index.html" class="text-slate-800 hover:text-[#AF8953] hover:underline underline-offset-8 decoration-[#AF8953]/40 text-sm tracking-wider transition-all duration-300 font-medium">首頁</a>
-          <a href="about.html" class="text-[#AF8953] font-bold text-sm tracking-wider underline underline-offset-8 decoration-[#AF8953]/60 transition-all duration-300">關於我們</a>
-          <a href="services.html" class="text-slate-800 hover:text-[#AF8953] hover:underline underline-offset-8 decoration-[#AF8953]/40 text-sm tracking-wider transition-all duration-300 font-medium">服務項目</a>
-          <a href="portfolio.html" class="text-slate-800 hover:text-[#AF8953] hover:underline underline-offset-8 decoration-[#AF8953]/40 text-sm tracking-wider transition-all duration-300 font-medium">工程實績</a>
-          <a href="contact.html" class="text-slate-800 hover:text-[#AF8953] hover:underline underline-offset-8 decoration-[#AF8953]/40 text-sm tracking-wider transition-all duration-300 font-medium">聯絡諮詢</a>
+        <div class="hidden md:flex items-center gap-6 lg:gap-10">
+          <a href="index.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">首頁</a>
+          <a href="about.html" class="logo-text text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">關於我們</a>
+          <a href="services.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
+          <a href="portfolio.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">工程實績</a>
+          <a href="contact.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
         </div>
 
         <!-- 手機版漢堡按鈕 -->
         <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
-          <span class="block w-6 h-px bg-slate-800 transition-all duration-300"></span>
-          <span class="block w-6 h-px bg-slate-800 transition-all duration-300"></span>
-          <span class="block w-6 h-px bg-slate-800 transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
         </button>
       </div>
     </div>
 
     <!-- 手機版展開選單 -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-xl border-t border-white/50 absolute w-full left-0 top-full z-10 shadow-xl">
+    <div id="mobile-menu" class="hidden md:hidden mobile-menu-glass absolute w-full left-0 top-full z-10">
       <div class="px-6 py-8 flex flex-col gap-6 text-center">
-        <a href="index.html" class="text-slate-800 font-medium text-sm tracking-wider">首頁</a>
-        <a href="about.html" class="text-[#AF8953] font-bold text-sm tracking-wider underline underline-offset-8">關於我們</a>
-        <a href="services.html" class="text-slate-800 font-medium text-sm tracking-wider">服務項目</a>
-        <a href="portfolio.html" class="text-slate-800 font-medium text-sm tracking-wider">工程實績</a>
-        <a href="contact.html" class="text-slate-800 font-medium text-sm tracking-wider">聯絡諮詢</a>
+        <a href="index.html" class="nav-text text-sm tracking-wider transition-colors duration-300">首頁</a>
+        <a href="about.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8">關於我們</a>
+        <a href="services.html" class="nav-text text-sm tracking-wider transition-colors duration-300">服務項目</a>
+        <a href="portfolio.html" class="nav-text text-sm tracking-wider transition-colors duration-300">工程實績</a>
+        <a href="contact.html" class="nav-text text-sm tracking-wider transition-colors duration-300">聯絡諮詢</a>
       </div>
     </div>
   </nav>
@@ -169,13 +212,11 @@
       <p class="text-gold text-xs sm:text-sm tracking-[0.5em] mb-6 animate-fade-in animate-delay-1 drop-shadow-md">ABOUT US</p>
       <h1 class="text-4xl md:text-6xl font-light tracking-[0.25em] text-rice mb-16 animate-fade-in animate-delay-1 drop-shadow-lg">關於我們</h1>
       
-      <!-- 放大加粗優化排版層次區 -->
       <p class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.18em] text-rice leading-[1.8] sm:leading-loose max-w-5xl mx-auto animate-fade-in animate-delay-2 drop-shadow-2xl">
         匯聚跨領域專業，以誠信為基石，創造超越期待的方案
       </p>
     </div>
 
-    <!-- 向下滑動沉浸式引導指標 -->
     <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center scroll-indicator pointer-events-none">
       <p class="text-[10px] sm:text-xs tracking-[0.4em] text-gold/80 uppercase mb-4 font-medium drop-shadow-md">滑動頁面 ── SCROLL DOWN</p>
       <div class="w-px h-14 bg-gradient-to-b from-gold to-transparent mx-auto drop-shadow-[0_0_8px_rgba(200,169,126,0.5)]"></div>
@@ -189,11 +230,9 @@
       <p class="text-gold text-xs tracking-[0.3em] mb-3 drop-shadow-md">PROFESSIONAL TEAM</p>
       <h2 class="text-2xl md:text-3xl font-light tracking-wider mb-12 text-rice drop-shadow-lg">精銳團隊</h2>
       
-      <!-- 智慧大幅放大與重疊輪播視窗 -->
       <div class="relative w-full overflow-hidden py-16 px-2">
         <div id="carousel-track" class="flex transition-transform duration-800 cubic-bezier(0.25, 1, 0.5, 1) gap-8 md:gap-0 md:-space-x-12">
           
-          <!-- 方格 1 -->
           <div class="carousel-card min-w-[86%] md:min-w-[40%] border border-gold/15 p-8 md:p-14 backdrop-blur-md relative group rounded-sm">
             <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
             <h3 class="text-xl sm:text-2xl tracking-wider mb-5 font-medium text-rice">消防設備師</h3>
@@ -202,7 +241,6 @@
             </p>
           </div>
           
-          <!-- 方格 2 -->
           <div class="carousel-card min-w-[86%] md:min-w-[40%] border border-gold/15 p-8 md:p-14 backdrop-blur-md relative group rounded-sm">
             <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
             <h3 class="text-xl sm:text-2xl tracking-wider mb-5 font-medium text-rice">消防設備士</h3>
@@ -211,7 +249,6 @@
             </p>
           </div>
           
-          <!-- 方格 3 -->
           <div class="carousel-card min-w-[86%] md:min-w-[40%] border border-gold/15 p-8 md:p-14 backdrop-blur-md relative group rounded-sm">
             <div class="w-8 h-px bg-gold mb-8 transition-all duration-500 group-hover:w-16"></div>
             <h3 class="text-xl sm:text-2xl tracking-wider mb-5 font-medium text-rice">專屬建築師</h3>
@@ -223,7 +260,6 @@
         </div>
       </div>
 
-      <!-- 輪播動態控制器 -->
       <div class="flex items-center justify-center gap-8 mt-10">
         <button id="prev-slide" class="text-gold/50 hover:text-gold transition-colors p-3.5 bg-white/5 hover:bg-white/10 rounded-full shadow-lg" aria-label="上一個團隊">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -236,7 +272,7 @@
     </div>
   </section>
 
-  <!-- Philosophy Section (全繁體高規書法字體升級版) -->
+  <!-- Philosophy Section -->
   <section class="py-32 px-6 relative z-10 bg-gradient-to-b from-transparent to-[#080f1a]/80">
     <div class="max-w-4xl mx-auto">
       <div class="section-divider mb-20"></div>
@@ -244,7 +280,6 @@
       <h2 class="text-2xl md:text-3xl font-light tracking-wider text-center mb-32 text-rice drop-shadow-lg">經營理念</h2>
       
       <div class="space-y-28">
-        <!-- 項目 壹 -->
         <div class="grid grid-cols-1 md:grid-cols-[minmax(280px,320px)_1fr] gap-8 md:gap-20 items-center group">
           <div class="text-left md:text-right">
             <h3 class="brush-title font-brush text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-rice/90 cursor-default select-none whitespace-nowrap tracking-widest leading-none">
@@ -258,7 +293,6 @@
           </div>
         </div>
         
-        <!-- 項目 貳 -->
         <div class="grid grid-cols-1 md:grid-cols-[minmax(280px,320px)_1fr] gap-8 md:gap-20 items-center group">
           <div class="text-left md:text-right">
             <h3 class="brush-title font-brush text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-rice/90 cursor-default select-none whitespace-nowrap tracking-widest leading-none">
@@ -272,7 +306,6 @@
           </div>
         </div>
         
-        <!-- 項目 參 -->
         <div class="grid grid-cols-1 md:grid-cols-[minmax(280px,320px)_1fr] gap-8 md:gap-20 items-center group">
           <div class="text-left md:text-right">
             <h3 class="brush-title font-brush text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-rice/90 cursor-default select-none whitespace-nowrap tracking-widest leading-none">
