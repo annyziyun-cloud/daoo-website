@@ -15,15 +15,17 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#080f1a', /* 微調基礎深色，帶有極深的藍調，提升科技與工程感 */
+            obsidian: '#080f1a', 
             rice: '#E5E0D8',
             walnut: '#3B302B',
             gold: '#C8A97E',
           },
           fontFamily: {
             serif: ['"Noto Serif TC"', 'serif'],
-            /* 建立多層次書法字體池，確保手寫感強烈且繁體字完美顯示 */
             brush: ['"Zhi Mang Xing"', '"Ma Shan Zheng"', '"Liu Jian Mao Cao"', '"DFKai-SB"', '"Noto Serif TC"', 'serif'],
+          },
+          screens: {
+            'xs': '375px',
           },
         },
       },
@@ -33,21 +35,34 @@
     /* =========================================
        導覽列樣式與動態效果 (全站一致微透白毛玻璃)
        ========================================= */
+    /* 一般選單文字 */
     .nav-text {
       color: rgba(229, 224, 216, 0.8);
+      transition: color 0.3s ease;
     }
     .nav-text:hover {
       color: #C8A97E;
     }
-    .logo-text {
+    
+    /* 當前頁面選單文字 (Active) */
+    .nav-text-active {
       color: #C8A97E;
-      transition: color 0.5s ease-in-out;
-    }
-    .hamburger-line {
-      background-color: #C8A97E;
-      transition: background-color 0.5s ease-in-out;
+      transition: color 0.3s ease;
     }
 
+    /* Logo 專屬文字變色邏輯 */
+    .logo-text-span {
+      color: #C8A97E; /* 未滾動前：金色 */
+      transition: color 0.3s ease-in-out;
+    }
+
+    /* 漢堡選單線條 */
+    .hamburger-line {
+      background-color: #C8A97E;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    /* --- 滾動後反白：微透毛玻璃狀態 --- */
     .nav-scrolled {
       background-color: rgba(255, 255, 255, 0.65) !important;
       backdrop-filter: saturate(180%) blur(24px);
@@ -59,20 +74,33 @@
     .nav-scrolled .flex {
       height: 4.5rem !important;
     }
+    
+    /* 滾動後：選單文字變深胡桃木色 */
     .nav-scrolled .nav-text {
-      color: #3B302B;
+      color: #3B302B; 
     }
     .nav-scrolled .nav-text:hover {
       color: #C8A97E;
     }
-    .nav-scrolled .logo-text {
+    
+    /* 滾動後：當前頁面選單文字變深胡桃木色並加粗 */
+    .nav-scrolled .nav-text-active {
       color: #3B302B;
       font-weight: 700;
     }
+
+    /* 滾動後：Logo文字變深胡桃木色並加粗，確保清晰可見 */
+    .nav-scrolled .logo-text-span {
+      color: #3B302B;
+      font-weight: 700;
+    }
+    
+    /* 滾動後：漢堡線條變深胡桃木色 */
     .nav-scrolled .hamburger-line {
       background-color: #3B302B;
     }
 
+    /* --- 手機版下拉選單 --- */
     .mobile-menu-glass {
       background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: saturate(180%) blur(24px);
@@ -80,7 +108,8 @@
       border-top: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     }
-    .mobile-menu-glass .nav-text {
+    .mobile-menu-glass .nav-text, 
+    .mobile-menu-glass .nav-text-active {
       color: #3B302B;
     }
     .mobile-menu-glass .nav-text:hover {
@@ -100,7 +129,6 @@
       background: linear-gradient(to right, transparent, rgba(200, 169, 126, 0.2), transparent);
     }
     
-    /* 日系柔和淡入動畫 */
     .animate-fade-in {
       animation: fadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
       opacity: 0;
@@ -113,7 +141,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 頂級大氣滾動引導動畫 */
     @keyframes scrollDownFloat {
       0%, 100% { transform: translate(-50%, 0); opacity: 0.4; }
       50% { transform: translate(-50%, 12px); opacity: 1; }
@@ -122,7 +149,6 @@
       animation: scrollDownFloat 2.5s infinite ease-in-out;
     }
 
-    /* 輪播卡片高度沉浸式重疊與放大縮小控制 */
     .carousel-card {
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
@@ -145,7 +171,6 @@
       z-index: 30;
     }
 
-    /* 專屬毛筆字體金墨背光懸停擴散效果 */
     .brush-title {
       transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       text-shadow: 0 0 0px rgba(200, 169, 126, 0);
@@ -164,21 +189,21 @@
   <div class="fixed inset-0 bg-[#080f1a]/90 pointer-events-none z-0"></div>
   <div class="fixed inset-0 bg-gradient-to-b from-[#080f1a]/95 via-transparent to-[#080f1a]/80 pointer-events-none z-0"></div>
 
-  <!-- Navbar (透明 -> 滾動微透白毛玻璃) -->
+  <!-- Navbar -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500 ease-in-out h-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
       <div class="flex items-center justify-between h-20 transition-all duration-500">
         
-        <!-- 品牌 Logo -->
-        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 logo-text text-sm xs:text-base sm:text-lg tracking-[0.2em] font-medium transition-all duration-500">
+        <!-- 品牌 Logo：移除 hidden 限制，確保文字永不消失 -->
+        <a id="brand-logo" href="index.html" class="group flex items-center gap-2 sm:gap-3 transition-all duration-500">
           <img src="logo.png" alt="daoo Logo" class="h-8 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
-          <span class="hidden xs:block">大禹防災科技</span>
+          <span class="logo-text-span text-base sm:text-lg tracking-[0.2em] font-medium whitespace-nowrap">大禹防災科技</span>
         </a>
 
         <!-- 電腦版選單 -->
         <div class="hidden md:flex items-center gap-6 lg:gap-10">
           <a href="index.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">首頁</a>
-          <a href="about.html" class="logo-text text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">關於我們</a>
+          <a href="about.html" class="nav-text-active text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">關於我們</a>
           <a href="services.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
           <a href="portfolio.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">工程實績</a>
           <a href="contact.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
@@ -186,9 +211,9 @@
 
         <!-- 手機版漢堡按鈕 -->
         <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
-          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
-          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
-          <span class="block w-6 h-px hamburger-line transition-all duration-300"></span>
+          <span class="block w-6 h-px hamburger-line"></span>
+          <span class="block w-6 h-px hamburger-line"></span>
+          <span class="block w-6 h-px hamburger-line"></span>
         </button>
       </div>
     </div>
@@ -197,7 +222,7 @@
     <div id="mobile-menu" class="hidden md:hidden mobile-menu-glass absolute w-full left-0 top-full z-10">
       <div class="px-6 py-8 flex flex-col gap-6 text-center">
         <a href="index.html" class="nav-text text-sm tracking-wider transition-colors duration-300">首頁</a>
-        <a href="about.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8">關於我們</a>
+        <a href="about.html" class="nav-text-active text-sm tracking-wider underline underline-offset-8">關於我們</a>
         <a href="services.html" class="nav-text text-sm tracking-wider transition-colors duration-300">服務項目</a>
         <a href="portfolio.html" class="nav-text text-sm tracking-wider transition-colors duration-300">工程實績</a>
         <a href="contact.html" class="nav-text text-sm tracking-wider transition-colors duration-300">聯絡諮詢</a>
@@ -432,7 +457,6 @@
         } else {
           const containerWidth = track.parentElement.offsetWidth;
           const cardWidth = cards[0].offsetWidth;
-          // 桌機端重疊間距精密補償計算，達成完美沉浸式微重疊
           const overlapCorrection = currentIndex * 48; 
           const centerPosition = (containerWidth / 2) - (cardWidth / 2) - (currentIndex * cardWidth) + overlapCorrection;
           track.style.transform = `translateX(${centerPosition}px)`;
