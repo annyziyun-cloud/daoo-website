@@ -28,16 +28,57 @@
     };
   </script>
   <style>
-    /* 修正自訂 CSS 與動態效果 */
+    /* =========================================
+       導覽列樣式與動態效果 (微透白毛玻璃升級版)
+       ========================================= */
+    
+    /* 預設狀態文字顏色 */
+    .nav-text {
+      color: rgba(229, 224, 216, 0.8); /* 淺米色 (#E5E0D8/80) */
+    }
+    .nav-text:hover {
+      color: #C8A97E; /* 懸停金色 */
+    }
+
+    /* 滾動後的頂級微透白毛玻璃質感 */
     .nav-scrolled {
-      background-color: rgba(12, 22, 34, 0.9) !important;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(200, 169, 126, 0.1);
+      background-color: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       height: 4.5rem !important;
     }
     .nav-scrolled .flex {
       height: 4.5rem !important;
     }
+    
+    /* 滾動後白底黑字，確保對比度 */
+    .nav-scrolled .nav-text {
+      color: #3B302B; /* 深胡桃木色 */
+    }
+    .nav-scrolled .nav-text:hover {
+      color: #C8A97E; /* 懸停金色 */
+    }
+
+    /* 手機版下拉選單：對齊白毛玻璃質感 */
+    .mobile-menu-glass {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+    .mobile-menu-glass .nav-text {
+      color: #3B302B;
+    }
+    .mobile-menu-glass .nav-text:hover {
+      color: #C8A97E;
+    }
+
+    /* =========================================
+       頁面其餘裝飾與動畫效果
+       ========================================= */
     .gold-line {
       width: 1px;
       height: 60px;
@@ -47,6 +88,7 @@
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(200, 169, 126, 0.2), transparent);
     }
+    
     /* 日系柔和淡入動畫 */
     .animate-fade-in {
       animation: fadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -60,19 +102,21 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
     /* 卡片懸停微互動 (淺色版) */
     .card-light {
-      background-color: #E5E0D8; /* 淺米色背景 */
+      background-color: #E5E0D8;
       transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       border: 1px solid transparent;
       border-radius: 2px;
     }
     .card-light:hover {
       transform: translateY(-4px);
-      background-color: #F2EFEA; /* 懸停時稍微提亮 */
-      border-color: rgba(200, 169, 126, 0.6); /* 邊框浮現金色 */
+      background-color: #F2EFEA;
+      border-color: rgba(200, 169, 126, 0.6);
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
     }
+    
     /* 點陣背景裝飾 */
     .bg-dot-pattern {
       background-image: radial-gradient(#3B302B 1px, transparent 1px);
@@ -85,6 +129,7 @@
       transform: translateY(40px);
       transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     }
+    
     /* 觸發後的完全呈現狀態 */
     .reveal-card.revealed {
       opacity: 1;
@@ -104,10 +149,10 @@
 
         <div class="hidden md:flex items-center gap-6 lg:gap-10">
           <a href="index.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8 decoration-[#C8A97E]/60 transition-all duration-300">首頁</a>
-          <a href="about.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">關於我們</a>
-          <a href="services.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
-          <a href="portfolio.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">工程實績</a>
-          <a href="contact.html" class="text-[#E5E0D8]/80 hover:text-[#C8A97E] hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
+          <a href="about.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">關於我們</a>
+          <a href="services.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">服務項目</a>
+          <a href="portfolio.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">工程實績</a>
+          <a href="contact.html" class="nav-text hover:underline underline-offset-8 decoration-[#C8A97E]/40 text-sm tracking-wider transition-all duration-300">聯絡諮詢</a>
         </div>
 
         <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 transition-all duration-300 z-50" aria-label="開啟選單">
@@ -118,13 +163,13 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-[#0c1622]/98 backdrop-blur-md border-t border-[#C8A97E]/10 absolute w-full left-0 top-full">
+    <div id="mobile-menu" class="hidden md:hidden mobile-menu-glass absolute w-full left-0 top-full">
       <div class="px-6 py-8 flex flex-col gap-6 text-center">
         <a href="index.html" class="text-[#C8A97E] text-sm tracking-wider underline underline-offset-8">首頁</a>
-        <a href="about.html" class="text-[#E5E0D8] text-sm tracking-wider">關於我們</a>
-        <a href="services.html" class="text-[#E5E0D8] text-sm tracking-wider">服務項目</a>
-        <a href="portfolio.html" class="text-[#E5E0D8] text-sm tracking-wider">工程實績</a>
-        <a href="contact.html" class="text-[#E5E0D8] text-sm tracking-wider">聯絡諮詢</a>
+        <a href="about.html" class="nav-text text-sm tracking-wider transition-colors duration-300">關於我們</a>
+        <a href="services.html" class="nav-text text-sm tracking-wider transition-colors duration-300">服務項目</a>
+        <a href="portfolio.html" class="nav-text text-sm tracking-wider transition-colors duration-300">工程實績</a>
+        <a href="contact.html" class="nav-text text-sm tracking-wider transition-colors duration-300">聯絡諮詢</a>
       </div>
     </div>
   </nav>
@@ -290,10 +335,10 @@
       // 緩動減速演算法 (Ease-out)
       const animateCount = (element) => {
         if (!element || element.classList.contains('has-animated')) return;
-        element.classList.add('has-animated'); // 防止重複觸發開關
+        element.classList.add('has-animated');
 
         const target = parseInt(element.getAttribute('data-target') || '0', 10);
-        const duration = 2000; // 動態演進總長度 2 秒
+        const duration = 2000; 
         const startTime = performance.now();
 
         const updateNumber = (currentTime) => {
@@ -305,7 +350,6 @@
           }
 
           const progress = elapsedTime / duration;
-          // Ease Out Quad 緩動公式：讓數字在接近目標時平滑減速
           const easeProgress = progress * (2 - progress);
           const currentCount = Math.floor(easeProgress * target);
           
@@ -322,8 +366,8 @@
         if (cards.length === 0) return;
 
         const observerOptions = {
-          root: null, // 視窗為基準
-          threshold: 0.08 // 行動端調小閾值至 8% 確保在小螢幕手機上完美滑順觸發
+          root: null, 
+          threshold: 0.08 
         };
 
         const observer = new IntersectionObserver((entries, observerInstance) => {
@@ -332,16 +376,13 @@
               const targetCard = entry.target;
               if (!targetCard) return;
               
-              // 1. 觸發卡片的「向上浮動」且「漸變出現」視差樣式
               targetCard.classList.add('revealed');
 
-              // 2. 同步尋找卡片內部是否有數字計數器，若有則啟動數字滾動
               const counterSpan = targetCard.querySelector('.animate-counter');
               if (counterSpan) {
                 animateCount(counterSpan);
               }
 
-              // 觸發後即解除該卡片的監聽，優化瀏覽器記憶體效能
               observerInstance.unobserve(targetCard);
             }
           });
